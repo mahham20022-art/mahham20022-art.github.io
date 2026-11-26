@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>MRCEM OSCE Prep — Najm</title>
+<link rel="icon" type="image/png" href="img/favicon-64.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="MRCEM OSCE">
+<meta name="theme-color" content="#0f1b33">
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d1d1b;--mute:#6b6a66;--line:#e4e2dc;--acc:#0f5c4d;--accs:#e3f0ec;--bad:#a8322a;--bads:#f8e6e4;--warn:#9a6a00;--warns:#fbf1dc}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--card:#1e1e1c;--ink:#ecebe7;--mute:#9b9a95;--line:#33322f;--acc:#5cc2a8;--accs:#18302a;--bad:#e8857c;--bads:#3a2120;--warn:#e5b84f;--warns:#352a14}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:660px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top)) 14px calc(96px + env(safe-area-inset-bottom))}
+h1{font-size:18px;margin:0}
+.hdr{display:flex;gap:12px;align-items:center}
+.logo{width:64px;height:64px;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.25);flex:none}
+h2{font-size:15px;margin:18px 0 8px}
+.sub{color:var(--mute);font-size:13px}
+.tabs{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;margin:12px 0}
+.tabs button{flex:1;border:0;background:transparent;color:var(--ink);padding:9px 4px;border-radius:9px;font-size:14px;cursor:pointer}
+.tabs button.on{background:var(--acc);color:#fff}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc);width:0}
+.stats{display:flex;gap:8px;font-size:13px;color:var(--mute);flex-wrap:wrap;margin-bottom:6px}
+.stats b{color:var(--ink)}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 11px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.chip small{opacity:.7}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
+.tag{display:inline-block;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.q{font-size:16px;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;padding:11px 12px;margin:7px 0;font-size:15px;cursor:pointer}
+.opt.c{background:var(--accs);border-color:var(--acc)}
+.opt.w{background:var(--bads);border-color:var(--bad)}
+.exp{margin-top:12px;padding:12px;border-radius:10px;background:var(--bg);font-size:14.5px}
+.exp .src{display:block;margin-top:8px;font-size:12px;color:var(--mute)}
+.model{white-space:pre-wrap;font-size:15px;border-left:3px solid var(--acc);padding:4px 0 4px 12px;margin:10px 0}
+.btn{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:12px 16px;font-size:15px;cursor:pointer;width:100%;margin-top:12px}
+.btn.ghost{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+.btn.sm{width:auto;padding:8px 12px;font-size:14px;margin-top:0}
+.rate{display:flex;gap:6px;margin-top:10px}
+.rate button{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:10px 4px;font-size:13.5px;cursor:pointer}
+.rate .r1{border-color:var(--acc)}.rate .r2{border-color:var(--warn)}.rate .r3{border-color:var(--bad)}
+.verdict{font-weight:600;margin-top:10px}
+.verdict.ok{color:var(--acc)}.verdict.no{color:var(--bad)}
+.foot{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.foot .in{max-width:660px;margin:0 auto;display:flex;gap:8px}
+.foot button{flex:1;margin:0}
+.empty{text-align:center;color:var(--mute);padding:30px 10px}
+.dlg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:9}
+.dlg.on{display:flex}
+.dlg .box{background:var(--card);border-radius:14px;padding:18px;max-width:380px;width:100%}
+.small{font-size:12px;color:var(--mute)}
+a{color:var(--acc)}
+.big{font-size:40px;font-weight:700;line-height:1.1}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+.kpi .v{font-size:22px;font-weight:700}
+.kpi .l{font-size:12px;color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td,th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--mute);font-weight:500;font-size:12px}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.mini{height:5px;background:var(--line);border-radius:3px;overflow:hidden;min-width:60px}
+.mini i{display:block;height:100%}
+.timer{font-size:46px;font-weight:700;font-variant-numeric:tabular-nums;text-align:center;margin:6px 0}
+.phase{text-align:center;font-size:13px;color:var(--mute)}
+.fw summary{cursor:pointer;font-weight:600;padding:2px 0;list-style:none}
+.fw summary::-webkit-details-marker{display:none}
+.fw summary:after{content:"+";float:right;color:var(--mute)}
+.fw[open] summary:after{content:"–"}
+.fw ol,.fw ul{margin:8px 0 4px;padding-left:20px;font-size:14.5px}
+.fw li{margin:3px 0}
+.lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);margin-top:10px}
+.fail li{color:var(--bad)}
+.pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--mute);margin-left:6px;vertical-align:middle}
+input[type=date]{font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+textarea{width:100%;height:160px;font:13px/1.4 ui-monospace,monospace;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);padding:8px}
+.note{background:var(--warns);border-radius:10px;padding:10px 12px;font-size:14px;margin-top:8px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr"><img src="img/logo-160.png" alt="" class="logo"><div><h1>MRCEM OSCE Prep</h1><div class="sub">The Clinical Exam Companion</div><div class="sub" id="subline"></div></div></div>
+  <div class="tabs" id="tabs">
+    <button data-t="home" class="on">Home</button>
+    <button data-t="practice">Practice</button>
+    <button data-t="fw">Frameworks</button>
+  </div>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="card">
+      <div class="small">Countdown to Chennai</div>
+      <div class="big" id="cd">—</div>
+      <div class="row" style="align-items:center">
+        <span class="small">Exam date:</span><input type="date" id="exdate">
+      </div>
+      <div class="note" id="paynote">Provisional place allocated for <b>Feb 2027 Chennai</b>. It's not confirmed until the exam fee is paid on your RCEM account.
+        <label style="display:block;margin-top:6px"><input type="checkbox" id="paid"> Fee paid</label></div>
+    </div>
+
+    <div class="kpis" style="margin-top:8px">
+      <div class="kpi"><div class="v" id="k1">0</div><div class="l">answered / <span id="ktot"></span></div></div>
+      <div class="kpi"><div class="v" id="k2">–</div><div class="l">accuracy</div></div>
+      <div class="kpi"><div class="v" id="k3">0</div><div class="l">due for review</div></div>
+    </div>
+    <button class="btn" id="goDue">Review due cards</button>
+    <button class="btn ghost" id="goNew">Practise unseen</button>
+
+    <h2>Domain mastery</h2>
+    <div class="card" style="padding:8px 12px"><table id="dtab"></table></div>
+    <div class="small" style="margin-top:6px">Tap a domain to practise it. Mastery = correct ÷ answered (partial counts half).</div>
+
+    <h2>Station timer</h2>
+    <div class="card">
+      <div class="phase" id="tphase">1 min reading → 8 min station</div>
+      <div class="timer" id="tclock">1:00</div>
+      <div class="bar"><i id="tbar"></i></div>
+      <div class="row" style="justify-content:center;margin-top:12px">
+        <button class="btn sm" id="tstart">Start</button>
+        <button class="btn sm ghost" id="treset">Reset</button>
+      </div>
+      <div class="small" style="text-align:center">Use it for Say-it cards and the stations we run in chat.</div>
+    </div>
+
+    <h2>Send me your weak points</h2>
+    <div class="card">
+      <div class="small">Copies your missed/partial items so you can paste them into our chat — I'll build the next mock stations from them.</div>
+      <button class="btn" id="copyWeak">Copy weak list</button>
+      <textarea id="weakTxt" class="hide" readonly></textarea>
+    </div>
+
+    <div id="installBox" class="hide">
+    <h2>Install the app</h2>
+    <div class="card">
+      <div id="installTxt" class="small"></div>
+      <button class="btn hide" id="installBtn">Install on this device</button>
+    </div>
+    </div>
+
+    <h2>Backup &amp; restore</h2>
+    <div class="card">
+      <div class="small">Your progress lives on this device. Export a backup file before changing phones, then import it on the new one.</div>
+      <div class="row"><button class="btn sm" id="expBtn">Export progress</button><label class="btn sm ghost" style="display:inline-block;text-align:center">Import<input type="file" id="impFile" accept="application/json,.json" class="hide"></label></div>
+      <div class="small" id="bkMsg"></div>
+    </div>
+
+    <h2>The exam (verified)</h2>
+    <div class="card" style="font-size:14.5px">
+      16 active stations × 8 minutes, 1 minute reading between stations, 2 rest stations, no double stations, domain-based marking. Chennai sittings are held at Apollo.
+      <div class="small" style="margin-top:8px">Sources: RCEM OSCE FAQs, RCEMLearning. Check your own allocation letter for the date and venue.</div>
+    </div>
+    <p class="small" style="margin-top:14px">Clinical numbers checked against RCUK 2025, NICE (NG232, NG253, NG225, NG143, NG133, NG128…), TOXBASE-derived guidance, UKKA, BSPED, JBDS and GMC as of Nov 2026. Local protocols and TOXBASE stay the source of truth on shift.<br>
+    Progress is saved in this browser only. <a href="#" id="reset">Reset progress</a></p>
+  </section>
+
+  <!-- PRACTICE -->
+  <section id="practice" class="hide">
+    <div class="stats" id="pstats"></div>
+    <div class="bar" style="margin-bottom:8px"><i id="pprog"></i></div>
+    <div class="row" id="domains"></div>
+    <div class="row" id="modes"></div>
+    <label class="small" style="display:block;margin:2px 0 4px"><input type="checkbox" id="recall"> Recall first — hide SBA options until I've answered out loud</label>
+    <div id="view"></div>
+    <p class="small" style="margin-top:12px">Say-it cards: say the answer out loud, word for word, <b>before</b> you reveal. Then rate yourself honestly — the spaced repetition depends on it.</p>
+  </section>
+
+  <!-- FRAMEWORKS -->
+  <section id="fw" class="hide">
+    <div class="small">Adaptable structures, not scripts. Read one before a matching Say-it set.</div>
+    <div id="fwlist"></div>
+  </section>
+</div>
+
+<div class="foot" id="foot"><div class="in">
+  <button class="btn ghost" id="prev">Back</button>
+  <button class="btn" id="next">Next</button>
+</div></div>
+
+<div class="dlg" id="dlg"><div class="box">
+  <p style="margin-top:0">Clear all answers, ratings and review schedule?</p>
+  <div class="rate"><button id="dNo">Cancel</button><button id="dYes" class="r3">Clear</button></div>
+</div></div>
+
+<script>
+const QB=[];
+function add(d,arr){
+  arr.forEach(x=>{
+    if(Array.isArray(x)){
+      if(x[0]==="s")QB.push({id:x[1],d,t:"sba",q:x[2],o:x[3],a:x[4],e:x[5],s:x[6]});
+      else QB.push({id:x[1],d,t:"say",q:x[2],m:x[3],e:x[4]});
+    }else{QB.push(Object.assign({},x,{id:String(x.id)}))}
+  });
+}
+</script>
+<script src="data/core.js"></script>
+<script src="data/resus.js"></script>
+<script src="data/paeds.js"></script>
+<script src="data/obs.js"></script>
+<script src="data/trauma.js"></script>
+<script src="data/cardio.js"></script>
+<script src="data/medical.js"></script>
+<script src="data/neuro_psych.js"></script>
+<script src="data/surg.js"></script>
+<script src="data/comms.js"></script>
+<script src="data/history.js"></script>
+<script src="data/frameworks.js"></script>
+<script>
+const DOM={tox:"Toxicology",law:"Capacity & Law",resus:"Resus",paeds:"Paediatrics",obs:"Obs & Gynae",trauma:"Trauma",cardio:"Cardio & ECG",med:"Acute Medicine",env:"Environmental",neuro:"Neuro",psych:"Psychiatry",surg:"Surg / MSK / Eye / ENT",comms:"Communication & Ethics"};
+const MODES={mix:"Mixed",due:"Due",new:"Unseen",miss:"Missed / partial",sba:"SBA only",say:"Say-it only"};
+const KEY="mrcem_bank_b1",DKEY="mrcem_exam_date",PKEY="mrcem_paid";
+const DAY=864e5,BOX=[0,0,1,3,7,14];
+let store={};
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+try{store=JSON.parse(ls(KEY)||"{}")||{}}catch(e){store={}}
+// migrate batch-1 string results
+for(const k in store){if(typeof store[k]==="string"){const r=store[k];store[k]={r,b:r==="c"?2:1,due:Date.now(),n:1}}}
+function save(){ls(KEY,JSON.stringify(store))}
+function record(id,r){
+  const p=store[id]||{b:1,n:0};let b=p.b||1;
+  if(r==="c")b=Math.min(5,b+1);else if(r==="w")b=1;
+  store[id]={r,b,n:(p.n||0)+1,due:Date.now()+BOX[b]*DAY+(r==="c"?0:10*60e3)};save();
+}
+const isDue=id=>store[id]&&store[id].due<=Date.now();
+
+// ---------- tabs
+let tab="home";
+function show(t){tab=t;["home","practice","fw"].forEach(s=>document.getElementById(s).classList.toggle("hide",s!==t));
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));
+  document.getElementById("foot").style.display=t==="practice"?"":"none";
+  if(t==="home")home();if(t==="practice")render();window.scrollTo(0,0)}
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>show(b.dataset.t));
+
+// ---------- home
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>")}
+function home(){
+  const d=ls(DKEY);const inp=document.getElementById("exdate");if(d)inp.value=d;
+  const cd=document.getElementById("cd");
+  if(d){const days=Math.ceil((new Date(d+"T09:00:00")-Date.now())/DAY);cd.textContent=days>0?days+" days":"Exam day";}else cd.textContent="Set your date";
+  const paid=ls(PKEY)==="1";document.getElementById("paid").checked=paid;
+  document.getElementById("paynote").style.opacity=paid?.55:1;
+  let ans=0,score=0,due=0;
+  QB.forEach(q=>{const s=store[q.id];if(s){ans++;score+=s.r==="c"?1:s.r==="p"?.5:0;if(s.due<=Date.now())due++}});
+  document.getElementById("k1").textContent=ans;document.getElementById("ktot").textContent=QB.length;
+  document.getElementById("k2").textContent=ans?Math.round(score/ans*100)+"%":"–";
+  document.getElementById("k3").textContent=due;
+  let h="<tr><th>Domain</th><th class='n'>Done</th><th class='n'>Mastery</th><th></th></tr>";
+  Object.keys(DOM).forEach(k=>{const qs=QB.filter(q=>q.d===k);if(!qs.length)return;let a=0,s=0;
+    qs.forEach(q=>{const x=store[q.id];if(x){a++;s+=x.r==="c"?1:x.r==="p"?.5:0}});
+    const m=a?Math.round(s/a*100):null;const col=m===null?"var(--line)":m>=80?"var(--acc)":m>=60?"var(--warn)":"var(--bad)";
+    h+=`<tr data-d="${k}" style="cursor:pointer"><td>${DOM[k]}</td><td class="n">${a}/${qs.length}</td><td class="n">${m===null?"–":m+"%"}</td><td><div class="mini"><i style="width:${m||0}%;background:${col}"></i></div></td></tr>`});
+  const t=document.getElementById("dtab");t.innerHTML=h;
+  t.querySelectorAll("tr[data-d]").forEach(r=>r.onclick=()=>{st.dom=r.dataset.d;st.mode="mix";chipsAll();build();show("practice")});
+  document.getElementById("subline").textContent=`${QB.length} items · ${QB.filter(q=>q.t==="say").length} Say-it · ${Object.keys(DOM).length} domains · ${FW.length} frameworks`;
+}
+document.getElementById("exdate").onchange=e=>{ls(DKEY,e.target.value);home()};
+document.getElementById("paid").onchange=e=>{ls(PKEY,e.target.checked?"1":"0");home()};
+document.getElementById("goDue").onclick=()=>{st.dom="all";st.mode="due";chipsAll();build();show("practice")};
+document.getElementById("goNew").onclick=()=>{st.dom="all";st.mode="new";chipsAll();build();show("practice")};
+document.getElementById("copyWeak").onclick=()=>{
+  const w=QB.filter(q=>store[q.id]&&(store[q.id].r==="w"||store[q.id].r==="p"));
+  const txt=w.length?"My MRCEM weak items ("+w.length+"):\n"+w.map(q=>`- [${DOM[q.d]}] ${store[q.id].r==="w"?"MISSED":"PARTIAL"} ${q.id}: ${q.q.replace(/\n/g," ").slice(0,110)}`).join("\n"):"No missed or partial items yet.";
+  const ta=document.getElementById("weakTxt");ta.value=txt;
+  const b=document.getElementById("copyWeak");
+  const done=()=>{b.textContent="Copied ✓";setTimeout(()=>b.textContent="Copy weak list",1800)};
+  try{navigator.clipboard.writeText(txt).then(done).catch(()=>{ta.classList.remove("hide");ta.select()})}catch(e){ta.classList.remove("hide");ta.select()}
+};
+
+// ---------- station timer
+let tState={phase:0,left:60,int:null};
+function tDraw(){const m=Math.floor(tState.left/60),s=tState.left%60;document.getElementById("tclock").textContent=m+":"+String(s).padStart(2,"0");
+  const tot=tState.phase===1?480:60;document.getElementById("tbar").style.width=((tot-tState.left)/tot*100)+"%";
+  document.getElementById("tphase").textContent=tState.phase===0?"Reading time":tState.phase===1?(tState.left<=60?"Final minute — summarise & close":"Station in progress"):"Time up — next station";
+  document.getElementById("tclock").style.color=tState.phase===1&&tState.left<=60?"var(--bad)":""}
+function tTick(){if(tState.left>0){tState.left--;}else if(tState.phase===0){tState.phase=1;tState.left=480;try{navigator.vibrate&&navigator.vibrate(200)}catch(e){}}else{tState.phase=2;clearInterval(tState.int);tState.int=null;document.getElementById("tstart").textContent="Start";try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}}tDraw()}
+document.getElementById("tstart").onclick=e=>{if(tState.int){clearInterval(tState.int);tState.int=null;e.target.textContent="Resume"}else{if(tState.phase===2){tState={phase:0,left:60,int:null}}tState.int=setInterval(tTick,1000);e.target.textContent="Pause"}};
+document.getElementById("treset").onclick=()=>{clearInterval(tState.int);tState={phase:0,left:60,int:null};document.getElementById("tstart").textContent="Start";tDraw()};
+
+// ---------- practice
+let st={dom:"all",mode:"mix"},order=[],pos=0,shown=false,picked=null,perm=null,opened=false;
+const RKEY="mrcem_recall";let recall=ls(RKEY)==="1";
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function pool(){let l=QB.filter(q=>st.dom==="all"||q.d===st.dom);
+  if(st.mode==="sba")l=l.filter(q=>q.t==="sba");
+  if(st.mode==="say")l=l.filter(q=>q.t==="say");
+  if(st.mode==="miss")l=l.filter(q=>store[q.id]&&(store[q.id].r==="w"||store[q.id].r==="p"));
+  if(st.mode==="new")l=l.filter(q=>!store[q.id]);
+  if(st.mode==="due")l=l.filter(q=>isDue(q.id));
+  return l}
+function build(){const l=pool();
+  if(st.mode==="mix"){const due=shuffle(l.filter(q=>isDue(q.id))),fresh=shuffle(l.filter(q=>!store[q.id])),rest=shuffle(l.filter(q=>store[q.id]&&!isDue(q.id)));order=[...due,...fresh,...rest].map(q=>q.id)}
+  else order=shuffle(l.map(q=>q.id));
+  pos=0;shown=false;picked=null;perm=null;opened=false;render()}
+function chips(el,obj,key,count){el.innerHTML="";
+  for(const k in obj){const b=document.createElement("button");b.className="chip"+(st[key]===k?" on":"");
+    let c="";if(count){c=k==="all"?QB.length:QB.filter(q=>q.d===k).length;c=` <small>${c}</small>`}
+    b.innerHTML=obj[k]+c;b.onclick=()=>{st[key]=k;chipsAll();build()};el.appendChild(b)}}
+function chipsAll(){chips(document.getElementById("domains"),Object.assign({all:"All"},DOM),"dom",true);chips(document.getElementById("modes"),MODES,"mode")}
+function pstats(){const l=QB.filter(q=>st.dom==="all"||q.d===st.dom);let c=0,w=0,p=0;
+  l.forEach(q=>{const s=store[q.id];if(!s)return;if(s.r==="c")c++;else if(s.r==="w")w++;else p++});
+  document.getElementById("pstats").innerHTML=`<span>${st.dom==="all"?"All":DOM[st.dom]}: <b>${c+w+p}/${l.length}</b></span><span>· ✓ <b>${c}</b></span><span>· ½ <b>${p}</b></span><span>· ✗ <b>${w}</b></span>`;
+  document.getElementById("pprog").style.width=l.length?((c+w+p)/l.length*100)+"%":"0"}
+function render(){pstats();const v=document.getElementById("view");
+  if(!order.length){v.innerHTML=`<div class="card empty">${st.mode==="due"?"Nothing due right now — nice. Try Unseen.":"Nothing here for this filter."}</div>`;return}
+  const q=QB.find(x=>x.id===order[pos]);const s=store[q.id];
+  let h=`<div class="card"><span class="tag">${DOM[q.d]} · ${q.t==="sba"?"SBA":"Say it"} · ${pos+1}/${order.length}${s?` <span class="pill">box ${s.b}</span>`:""}</span><p class="q">${esc(q.q)}</p>`;
+  if(q.t==="sba"){
+    if(!perm||perm.q!==q.id)perm={q:q.id,p:shuffle(q.o.map((_,i)=>i))};
+    const ca=perm.p.indexOf(q.a);
+    if(recall&&!opened&&picked===null){h+=`<button class="btn ghost" id="openOpts">I've said my answer — show options</button>`}
+    else{perm.p.forEach((oi,i)=>{let cl="opt";if(picked!==null){if(i===ca)cl+=" c";else if(i===picked)cl+=" w"}h+=`<button class="${cl}" data-i="${i}">${String.fromCharCode(65+i)}. ${esc(q.o[oi])}</button>`})}
+    if(picked!==null){const ok=picked===ca;h+=`<div class="verdict ${ok?"ok":"no"}">${ok?"Correct.":"Not quite — answer "+String.fromCharCode(65+ca)+"."}</div><div class="exp">${esc(q.e)}<span class="src">${esc(q.s||"")}</span></div>`}
+  }else{
+    if(!shown)h+=`<button class="btn" id="reveal">I've said it — reveal model answer</button>`;
+    else{h+=`<div class="model">${esc(q.m)}</div><div class="exp">${esc(q.e)}</div><div class="rate"><button class="r1" data-r="c">Nailed it</button><button class="r2" data-r="p">Partial</button><button class="r3" data-r="w">Missed</button></div>`;
+      if(s&&s._now)h+=`<div class="small" style="margin-top:8px">Saved: ${{c:"Nailed it",p:"Partial",w:"Missed"}[s.r]}</div>`}}
+  h+=`</div>`;v.innerHTML=h;
+  v.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{if(picked!==null)return;picked=+b.dataset.i;record(q.id,picked===perm.p.indexOf(q.a)?"c":"w");render()});
+  const oo=document.getElementById("openOpts");if(oo)oo.onclick=()=>{opened=true;render()};
+  const r=document.getElementById("reveal");if(r)r.onclick=()=>{shown=true;render()};
+  v.querySelectorAll(".rate button").forEach(b=>b.onclick=()=>{record(q.id,b.dataset.r);store[q.id]._now=1;render();delete store[q.id]._now})}
+function step(d){if(!order.length)return;pos=(pos+d+order.length)%order.length;shown=false;picked=null;perm=null;opened=false;render();window.scrollTo(0,0)}
+document.getElementById("next").onclick=()=>step(1);
+document.getElementById("prev").onclick=()=>step(-1);
+
+// ---------- frameworks
+function fws(){document.getElementById("fwlist").innerHTML=FW.map(f=>`<details class="card fw"><summary>${esc(f.t)}<span class="pill">${esc(f.tag)}</span></summary>
+<div class="lbl">Structure</div><ol>${f.steps.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>
+<div class="lbl">Phrases that work</div><ul>${f.phrases.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+<div class="lbl">Critical fails</div><ul class="fail">${f.fails.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`).join("")}
+
+// ---------- reset
+const dlg=document.getElementById("dlg");
+document.getElementById("reset").onclick=e=>{e.preventDefault();dlg.classList.add("on")};
+document.getElementById("dNo").onclick=()=>dlg.classList.remove("on");
+document.getElementById("dYes").onclick=()=>{store={};save();dlg.classList.remove("on");build();home()};
+
+const rc=document.getElementById("recall");rc.checked=recall;rc.onchange=e=>{recall=e.target.checked;ls(RKEY,recall?"1":"0");opened=false;render()};
+// ---------- install (PWA)
+const standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+let deferred=null;
+if(!standalone){
+  const box=document.getElementById("installBox"),txt=document.getElementById("installTxt"),btn=document.getElementById("installBtn");
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  box.classList.remove("hide");
+  txt.innerHTML=ios?"On iPhone: open this page in <b>Safari</b>, tap the <b>Share</b> button, then <b>Add to Home Screen</b>. It opens full-screen with its own icon and works offline.":"Install it to open full-screen from your home screen and use it offline. If no button appears, use your browser menu → <b>Install app</b> / <b>Add to Home screen</b>.";
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;btn.classList.remove("hide")});
+  btn.onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;btn.classList.add("hide")};
+  window.addEventListener("appinstalled",()=>box.classList.add("hide"));
+}
+if("serviceWorker" in navigator&&location.protocol.startsWith("http")){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+
+// ---------- backup
+document.getElementById("expBtn").onclick=()=>{
+  const data={app:"mrcem-osce",v:1,date:new Date().toISOString(),store,exam:ls(DKEY),paid:ls(PKEY)};
+  const blob=new Blob([JSON.stringify(data)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="mrcem-progress-"+new Date().toISOString().slice(0,10)+".json";
+  document.body.appendChild(a);a.click();a.remove();
+  document.getElementById("bkMsg").textContent="Backup saved ("+Object.keys(store).length+" items).";
+};
+document.getElementById("impFile").onchange=e=>{
+  const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const d=JSON.parse(r.result);if(d.app!=="mrcem-osce"||!d.store)throw 0;
+    for(const k in d.store){const a=store[k],b=d.store[k];if(!a||(b.n||0)>(a.n||0))store[k]=b}
+    if(d.exam)ls(DKEY,d.exam);if(d.paid)ls(PKEY,d.paid);save();build();home();
+    document.getElementById("bkMsg").textContent="Imported — progress merged.";}catch(x){document.getElementById("bkMsg").textContent="That file isn't a valid MRCEM backup."}};
+  r.readAsText(f);e.target.value="";
+};
+
+save();chipsAll();build();fws();tDraw();show("home");
+</script>
+</body>
+</html>

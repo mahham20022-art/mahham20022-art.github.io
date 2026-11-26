@@ -1,0 +1,16 @@
+{
+  "name": "MRCEM OSCE — The Clinical Exam Companion",
+  "short_name": "MRCEM OSCE",
+  "description": "MRCEM OSCE preparation: question bank, Say-it cards, station frameworks and timer.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1b33",
+  "theme_color": "#0f1b33",
+  "icons": [
+    {"src": "img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
