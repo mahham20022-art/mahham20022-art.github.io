@@ -1,5 +1,5 @@
 // Offline cache. Bump VERSION whenever any file changes so phones pick up the update.
-const VERSION = "mrcem-v2.1";
+const VERSION = "mrcem-v2.1.1";
 const FILES = [
   "./", "./index.html", "./manifest.webmanifest",
   "./data/core.js", "./data/resus.js", "./data/paeds.js", "./data/obs.js", "./data/trauma.js",
