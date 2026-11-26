@@ -3,205 +3,455 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MRCEM OSCE — The Clinical Exam Companion</title>
+<meta name="description" content="Independent MRCEM OSCE study companion by Dr Najm: 290 items across 13 domains, Say-it communication cards, station frameworks, an 8-minute station timer and spaced repetition. Works offline.">
+<meta name="author" content="Dr Mohamed Najm">
+<meta name="theme-color" content="#0A1326">
+<meta name="color-scheme" content="dark">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="icon" type="image/svg+xml" href="brand/mark.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>MRCEM OSCE Prep — Najm</title>
-<link rel="icon" type="image/png" href="img/favicon-64.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-title" content="MRCEM OSCE">
-<meta name="theme-color" content="#0f1b33">
+<meta name="application-name" content="MRCEM OSCE">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MRCEM OSCE · The Tract">
+<meta property="og:title" content="MRCEM OSCE — The Clinical Exam Companion">
+<meta property="og:description" content="Prepare · Practice · Perform. An independent MRCEM OSCE study app by Dr Najm.">
+<meta property="og:url" content="https://mahham20022-art.github.io/mrcem/">
+<meta property="og:image" content="https://mahham20022-art.github.io/mrcem/img/og-1200x630.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/Inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/GFSBaskerville.otf" as="font" type="font/otf" crossorigin>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#1d1d1b;--mute:#6b6a66;--line:#e4e2dc;--acc:#0f5c4d;--accs:#e3f0ec;--bad:#a8322a;--bads:#f8e6e4;--warn:#9a6a00;--warns:#fbf1dc}
-@media (prefers-color-scheme:dark){:root{--bg:#141413;--card:#1e1e1c;--ink:#ecebe7;--mute:#9b9a95;--line:#33322f;--acc:#5cc2a8;--accs:#18302a;--bad:#e8857c;--bads:#3a2120;--warn:#e5b84f;--warns:#352a14}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-.wrap{max-width:660px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top)) 14px calc(96px + env(safe-area-inset-bottom))}
-h1{font-size:18px;margin:0}
-.hdr{display:flex;gap:12px;align-items:center}
-.logo{width:64px;height:64px;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.25);flex:none}
-h2{font-size:15px;margin:18px 0 8px}
-.sub{color:var(--mute);font-size:13px}
-.tabs{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;margin:12px 0}
-.tabs button{flex:1;border:0;background:transparent;color:var(--ink);padding:9px 4px;border-radius:9px;font-size:14px;cursor:pointer}
-.tabs button.on{background:var(--acc);color:#fff}
-.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--acc);width:0}
-.stats{display:flex;gap:8px;font-size:13px;color:var(--mute);flex-wrap:wrap;margin-bottom:6px}
+@font-face{font-family:Inter;src:url(fonts/Inter-latin.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Inter Display";src:url(fonts/InterDisplay-SemiBold.woff) format("woff");font-weight:600;font-display:swap}
+@font-face{font-family:"Inter Display";src:url(fonts/InterDisplay-Bold.woff) format("woff");font-weight:700;font-display:swap}
+@font-face{font-family:Bask;src:url(fonts/GFSBaskerville.otf) format("opentype");font-display:swap}
+:root{--bg:#0A1326;--bg2:#0E1A33;--card:#111F3B;--card2:#162849;--line:#22355A;--ink:#F3EBD8;--ink2:#D9D1BE;--mute:#93A0B9;--gold:#D4AF37;--gold2:#F0D58C;--golds:rgba(212,175,55,.14);--ok:#5CC9A7;--oks:rgba(92,201,167,.15);--bad:#EF8A7E;--bads:rgba(239,138,126,.15);--warn:#E9C766;--r:16px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;background:radial-gradient(1200px 600px at 50% -200px,#16294F 0%,var(--bg) 60%) fixed;color:var(--ink);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:680px;margin:0 auto;padding:calc(10px + env(safe-area-inset-top)) 16px calc(100px + env(safe-area-inset-bottom))}
+.disp{font-family:"Inter Display",Inter,sans-serif;font-weight:600;letter-spacing:-.01em}
+.serif{font-family:Bask,Georgia,serif}
+.goldtxt{background:linear-gradient(180deg,#F6DE9A,#D4AF37 60%,#A97C22);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hide{display:none!important}
+.small{font-size:12.5px;color:var(--mute)}
+a{color:var(--gold2)}
+
+/* ===== header ===== */
+.hdr{display:flex;align-items:center;gap:12px;padding:6px 0 4px}
+.hdr img{width:44px;height:44px;border-radius:11px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.hdr .wm{font-family:Bask,Georgia,serif;font-size:21px;letter-spacing:2px;line-height:1}
+.hdr .wm b{font-weight:400;letter-spacing:4px;color:var(--ink)}
+.hdr .tag{font-size:12px;color:var(--mute);margin-top:3px}
+.hdr .chip{margin-left:auto}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 11px;font-size:12.5px;color:var(--ink2);white-space:nowrap}
+.chip.gold{border-color:rgba(212,175,55,.45);color:var(--gold2);background:var(--golds)}
+
+/* ===== tab bar ===== */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(10,19,38,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+.tabbar .in{max-width:680px;margin:0 auto;display:flex}
+.tabbar button{flex:1;border:0;background:none;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;padding:6px 0;cursor:pointer}
+.tabbar svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabbar button.on{color:var(--gold2)}
+body.inpr .wrap{padding-bottom:calc(170px + env(safe-area-inset-bottom))}
+.pnav{position:fixed;left:0;right:0;bottom:calc(62px + env(safe-area-inset-bottom));z-index:19;padding:0 16px}
+.pnav .in{max-width:680px;margin:0 auto;display:flex;gap:8px}
+
+/* ===== cards ===== */
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-top:12px}
+.card.goldline{border-color:rgba(212,175,55,.38);box-shadow:inset 0 0 0 1px rgba(212,175,55,.06),0 10px 30px rgba(0,0,0,.25)}
+h2.sec{font-family:"Inter Display",Inter,sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:22px 2px 0}
+.btn{border:0;background:linear-gradient(180deg,#E7C766,#C99A2E);color:#1A1406;font-weight:600;border-radius:12px;padding:12px 16px;font-size:15px;cursor:pointer;width:100%;margin-top:12px;box-shadow:0 6px 18px rgba(212,175,55,.18)}
+.btn.ghost{background:transparent;color:var(--gold2);border:1px solid rgba(212,175,55,.5);box-shadow:none}
+.btn.sm{width:auto;padding:8px 13px;font-size:13.5px;margin-top:0}
+.btn:active{transform:translateY(1px)}
+
+/* ===== hero / readiness ===== */
+.greet{font-family:Bask,Georgia,serif;font-size:26px;margin:16px 2px 0;line-height:1.15}
+.greet small{display:block;font-family:Inter,sans-serif;font-size:13.5px;color:var(--mute);margin-top:6px}
+.hero{display:flex;gap:16px;align-items:center}
+.ring{position:relative;width:132px;height:132px;flex:none}
+.ring svg{width:132px;height:132px;transform:rotate(-90deg)}
+.ring .v{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .v b{font-family:"Inter Display",Inter;font-weight:700;font-size:34px;line-height:1}
+.ring .v span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+.kv{flex:1;display:grid;gap:9px}
+.kv .r{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--ink2)}
+.kv .r b{font-family:"Inter Display",Inter;font-size:17px;color:var(--ink)}
+.mini{height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin-top:3px}
+.mini i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#B8892A,#F0D58C)}
+.target{margin-top:12px;font-size:13px;color:var(--mute);border-top:1px dashed var(--line);padding-top:10px}
+
+/* ===== mission ===== */
+.mhead{display:flex;justify-content:space-between;align-items:baseline}
+.mhead .disp{font-size:18px}
+.bar{height:7px;background:rgba(255,255,255,.07);border-radius:4px;overflow:hidden;margin:10px 0 6px}
+.bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#B8892A,#F0D58C);transition:width .5s}
+.task{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.task:first-of-type{border-top:0}
+.tick{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center}
+.task.done .tick{background:var(--ok);border-color:var(--ok)}
+.task.done .tick:after{content:"";width:9px;height:5px;border-left:2px solid #0A1326;border-bottom:2px solid #0A1326;transform:rotate(-45deg) translate(1px,-1px)}
+.task .tx{flex:1;font-size:14.5px}
+.task .tx small{display:block;color:var(--mute);font-size:12.5px}
+.task.done .tx{color:var(--mute)}
+.streak{display:flex;gap:6px;margin-top:10px;align-items:center}
+.streak i{width:24px;height:6px;border-radius:3px;background:rgba(255,255,255,.08)}
+.streak i.on{background:linear-gradient(90deg,#B8892A,#F0D58C)}
+
+/* ===== pearl ===== */
+.pearl{position:relative;padding-left:16px}
+.pearl:before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:3px;border-radius:2px;background:linear-gradient(#F0D58C,#B8892A)}
+.pearl .q{font-family:Bask,Georgia,serif;font-size:19px;line-height:1.35}
+.pearl .s{font-size:12px;color:var(--mute);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
+
+/* ===== weak / table ===== */
+.wrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.wrow:first-child{border-top:0}
+.wrow .n{flex:1;font-size:14.5px}
+.wrow .n small{display:block;color:var(--mute);font-size:12px}
+.pct{font-family:"Inter Display",Inter;font-weight:700;font-size:16px;min-width:44px;text-align:right}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td,th{padding:8px 4px;border-bottom:1px solid var(--line);text-align:left}
+tr:last-child td{border-bottom:0}
+th{color:var(--mute);font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.mb{height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;min-width:56px}
+.mb i{display:block;height:100%}
+
+/* ===== timer ===== */
+.tbox{display:flex;flex-direction:column;align-items:center}
+.tring{position:relative;width:190px;height:190px}
+.tring svg{width:190px;height:190px;transform:rotate(-90deg)}
+.tring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tring .c b{font-family:"Inter Display",Inter;font-weight:700;font-size:44px;font-variant-numeric:tabular-nums;line-height:1}
+.tring .c span{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:6px;text-align:center;max-width:140px}
+.trow{display:flex;gap:8px;margin-top:12px}
+
+/* ===== practice ===== */
+.stats{display:flex;gap:10px;font-size:13px;color:var(--mute);flex-wrap:wrap;margin:10px 2px 6px}
 .stats b{color:var(--ink)}
 .row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
-.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 11px;font-size:13px;cursor:pointer}
-.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.chip small{opacity:.7}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:8px}
-.tag{display:inline-block;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
-.q{font-size:16px;margin:0 0 14px}
-.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;padding:11px 12px;margin:7px 0;font-size:15px;cursor:pointer}
-.opt.c{background:var(--accs);border-color:var(--acc)}
+.pill{border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+.pill.on{background:var(--golds);border-color:rgba(212,175,55,.6);color:var(--gold2)}
+.pill small{opacity:.6}
+.scroller{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.scroller::-webkit-scrollbar{display:none}
+.scroller .pill{flex:none}
+.tog{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13.5px;color:var(--ink2);padding:6px 2px}
+.sw{position:relative;width:44px;height:26px;flex:none}
+.sw input{opacity:0;width:0;height:0}
+.sw i{position:absolute;inset:0;border-radius:13px;background:#2A3B60;transition:.2s}
+.sw i:after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#C8CFDD;transition:.2s}
+.sw input:checked+i{background:linear-gradient(90deg,#B8892A,#E7C766)}
+.sw input:checked+i:after{left:21px;background:#fff}
+.qcard{min-height:240px}
+.tagline{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tagline .bx{border:1px solid var(--line);border-radius:999px;padding:1px 8px;letter-spacing:.04em}
+.q{font-size:16.5px;margin:12px 0 14px;line-height:1.55}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:12px;padding:12px 13px;margin:8px 0;font-size:15px;cursor:pointer;line-height:1.45}
+.opt b{color:var(--gold2);margin-right:6px}
+.opt.c{background:var(--oks);border-color:var(--ok)}
 .opt.w{background:var(--bads);border-color:var(--bad)}
-.exp{margin-top:12px;padding:12px;border-radius:10px;background:var(--bg);font-size:14.5px}
+.verdict{font-weight:600;margin-top:12px}
+.verdict.ok{color:var(--ok)}.verdict.no{color:var(--bad)}
+.exp{margin-top:10px;padding:13px;border-radius:12px;background:rgba(0,0,0,.22);font-size:14.5px;color:var(--ink2);line-height:1.55}
 .exp .src{display:block;margin-top:8px;font-size:12px;color:var(--mute)}
-.model{white-space:pre-wrap;font-size:15px;border-left:3px solid var(--acc);padding:4px 0 4px 12px;margin:10px 0}
-.btn{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:12px 16px;font-size:15px;cursor:pointer;width:100%;margin-top:12px}
-.btn.ghost{background:transparent;color:var(--acc);border:1px solid var(--acc)}
-.btn.sm{width:auto;padding:8px 12px;font-size:14px;margin-top:0}
-.rate{display:flex;gap:6px;margin-top:10px}
-.rate button{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:10px 4px;font-size:13.5px;cursor:pointer}
-.rate .r1{border-color:var(--acc)}.rate .r2{border-color:var(--warn)}.rate .r3{border-color:var(--bad)}
-.verdict{font-weight:600;margin-top:10px}
-.verdict.ok{color:var(--acc)}.verdict.no{color:var(--bad)}
-.foot{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
-.foot .in{max-width:660px;margin:0 auto;display:flex;gap:8px}
-.foot button{flex:1;margin:0}
-.empty{text-align:center;color:var(--mute);padding:30px 10px}
-.dlg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:9}
-.dlg.on{display:flex}
-.dlg .box{background:var(--card);border-radius:14px;padding:18px;max-width:380px;width:100%}
-.small{font-size:12px;color:var(--mute)}
-a{color:var(--acc)}
-.big{font-size:40px;font-weight:700;line-height:1.1}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
-.kpi .v{font-size:22px;font-weight:700}
-.kpi .l{font-size:12px;color:var(--mute)}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-td,th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left}
-th{color:var(--mute);font-weight:500;font-size:12px}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.mini{height:5px;background:var(--line);border-radius:3px;overflow:hidden;min-width:60px}
-.mini i{display:block;height:100%}
-.timer{font-size:46px;font-weight:700;font-variant-numeric:tabular-nums;text-align:center;margin:6px 0}
-.phase{text-align:center;font-size:13px;color:var(--mute)}
-.fw summary{cursor:pointer;font-weight:600;padding:2px 0;list-style:none}
+.model{white-space:pre-wrap;font-size:15.5px;border-left:3px solid var(--gold);padding:4px 0 4px 13px;margin:12px 0;font-family:Bask,Georgia,serif;font-size:17px;line-height:1.5}
+.rate{display:flex;gap:6px;margin-top:12px}
+.rate button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:11px 4px;font-size:13.5px;cursor:pointer}
+.rate .r1{border-color:var(--ok);color:var(--ok)}.rate .r2{border-color:var(--warn);color:var(--warn)}.rate .r3{border-color:var(--bad);color:var(--bad)}
+.cd{margin:10px 0 0}
+.cd .bar{margin:6px 0}
+.cd .bar i{transition:width 1s linear}
+.empty{text-align:center;color:var(--mute);padding:36px 10px}
+
+/* ===== frameworks ===== */
+.fw summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:10px;font-size:15px}
 .fw summary::-webkit-details-marker{display:none}
-.fw summary:after{content:"+";float:right;color:var(--mute)}
-.fw[open] summary:after{content:"–"}
-.fw ol,.fw ul{margin:8px 0 4px;padding-left:20px;font-size:14.5px}
-.fw li{margin:3px 0}
-.lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);margin-top:10px}
+.fw summary .tg{margin-left:auto;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--mute);font-weight:500}
+.fw ol,.fw ul{margin:8px 0 4px;padding-left:20px;font-size:14.5px;color:var(--ink2)}
+.fw li{margin:4px 0}
+.lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);margin-top:12px}
 .fail li{color:var(--bad)}
-.pill{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--mute);margin-left:6px;vertical-align:middle}
-input[type=date]{font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
-textarea{width:100%;height:160px;font:13px/1.4 ui-monospace,monospace;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);padding:8px}
-.note{background:var(--warns);border-radius:10px;padding:10px 12px;font-size:14px;margin-top:8px}
-.hide{display:none}
+
+/* ===== misc ===== */
+input[type=date],select{padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg2);color:var(--ink);color-scheme:dark}
+textarea{width:100%;height:150px;font:12.5px/1.4 ui-monospace,monospace;border:1px solid var(--line);border-radius:10px;background:var(--bg2);color:var(--ink);padding:8px;margin-top:10px}
+.dlg{position:fixed;inset:0;background:rgba(3,8,18,.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
+.dlg.on{display:flex}
+.dlg .box{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:380px;width:100%}
+.poster{width:100%;border-radius:14px;display:block;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:var(--card2);border:1px solid rgba(212,175,55,.45);color:var(--gold2);padding:9px 14px;border-radius:999px;font-size:13.5px;opacity:0;transition:.3s;z-index:70;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== SPLASH ===== */
+#splash{position:fixed;inset:0;z-index:100;background:#070E1D;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:opacity .5s ease,transform .6s ease}
+#splash.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.sp-aur{position:absolute;inset:-20%;pointer-events:none}
+.sp-aur i{position:absolute;border-radius:50%;filter:blur(60px);opacity:0;animation:aur 3.4s ease forwards}
+.sp-aur i:nth-child(1){width:70vmax;height:70vmax;left:-10%;top:-20%;background:radial-gradient(circle,#1E3A78 0%,transparent 65%)}
+.sp-aur i:nth-child(2){width:60vmax;height:60vmax;right:-15%;bottom:-25%;background:radial-gradient(circle,rgba(212,175,55,.32) 0%,transparent 60%);animation-delay:.5s}
+.sp-aur i:nth-child(3){width:40vmax;height:40vmax;left:30%;top:30%;background:radial-gradient(circle,rgba(92,201,167,.12) 0%,transparent 60%);animation-delay:1.1s}
+@keyframes aur{to{opacity:1}}
+.sp-frame{position:absolute;inset:calc(14px + env(safe-area-inset-top)) 14px calc(14px + env(safe-area-inset-bottom));border:1px solid rgba(212,175,55,0);border-radius:26px;animation:frm 1.4s .2s ease forwards}
+@keyframes frm{to{border-color:rgba(212,175,55,.28)}}
+.sp-stage{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 20px}
+.sp-mark{width:min(54vw,230px);height:auto;overflow:visible}
+.sp-crown{opacity:0;transform:translateY(-14px);animation:crown .5s .15s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes crown{to{opacity:1;transform:none}}
+.sp-ticks path{opacity:0;animation:tk .18s forwards}
+@keyframes tk{to{opacity:.55}}
+.sp-ring{stroke-dasharray:0 100;animation:ring 1.15s .25s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes ring{to{stroke-dasharray:88 12}}
+.sp-ecg{stroke-dasharray:1;stroke-dashoffset:1;animation:ecg .75s 1.05s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes ecg{to{stroke-dashoffset:0}}
+.sp-dot{opacity:0;animation:dot .4s 1.75s ease forwards,beat 1s 2.15s ease-in-out infinite}
+@keyframes dot{to{opacity:1}}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.sp-dot{transform-origin:402px 288px}
+.sp-ping{fill:none;stroke:#F0D58C;stroke-width:3;opacity:0;transform-origin:256px 274px;animation:ping 1.1s 1.8s ease-out forwards}
+@keyframes ping{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.45)}}
+.sp-word{margin-top:22px;font-family:Bask,Georgia,serif;font-size:clamp(40px,12vw,62px);letter-spacing:.14em;line-height:1;display:flex;padding-left:.14em}
+.sp-word span{background:linear-gradient(180deg,#F6DE9A,#D4AF37 60%,#A97C22);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(10px);filter:blur(6px);animation:lt .55s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes lt{to{opacity:1;transform:none;filter:none}}
+.sp-osce{display:flex;align-items:center;gap:14px;margin-top:10px;font-family:Bask,Georgia,serif;font-size:clamp(24px,7vw,34px);letter-spacing:.5em;padding-left:.5em;color:var(--ink);opacity:0;animation:fade .6s 1.75s forwards}
+.sp-osce:before,.sp-osce:after{content:"";height:1px;width:clamp(26px,9vw,54px);background:linear-gradient(90deg,transparent,#D4AF37)}
+.sp-osce:after{background:linear-gradient(90deg,#D4AF37,transparent)}
+.sp-tag{margin-top:16px;font-family:Bask,Georgia,serif;font-style:italic;font-size:17px;color:var(--gold2);opacity:0;animation:fade .6s 2.0s forwards}
+@keyframes fade{to{opacity:1}}
+.sp-hud{position:absolute;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom));text-align:center;font-family:"Inter Display",Inter;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#9FB0CE;min-height:18px}
+.sp-hud b{color:var(--ok);font-weight:600}
+.sp-hud .dotg{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:8px;box-shadow:0 0 10px var(--ok);vertical-align:1px}
+.sp-me{position:absolute;left:0;right:0;bottom:calc(38px + env(safe-area-inset-bottom));text-align:center;font-size:12.5px;color:#7F8DAA;opacity:0;animation:fade .6s 2.2s forwards}
+.sp-skip{position:absolute;top:calc(26px + env(safe-area-inset-top));right:28px;font-size:12px;color:#6E7C99;letter-spacing:.08em}
+@media (prefers-reduced-motion:reduce){#splash *{animation-duration:.01s!important;animation-delay:0s!important}}
+
+/* ===== ONBOARDING ===== */
+#onb{position:fixed;inset:0;z-index:90;background:radial-gradient(900px 500px at 50% 0,#1A3060,#070E1D 70%);display:flex;align-items:center;justify-content:center;padding:24px}
+.ob{max-width:420px;width:100%;text-align:center}
+.ob img{width:88px;height:88px;border-radius:22px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.ob h1{font-family:Bask,Georgia,serif;font-weight:400;font-size:30px;margin:18px 0 8px;line-height:1.15}
+.ob p{color:var(--ink2);font-size:15.5px;margin:8px 0}
+.ob .dots{display:flex;gap:6px;justify-content:center;margin-top:22px}
+.ob .dots i{width:7px;height:7px;border-radius:50%;background:#2A3B60}
+.ob .dots i.on{background:var(--gold);width:20px;border-radius:4px}
+.ob .opts{text-align:left;margin-top:14px}
+.ob .tog{border-top:1px solid var(--line);padding:12px 2px}
+.ob .tog small{display:block;color:var(--mute);font-size:12.5px}
+.ob .skip{background:none;border:0;color:var(--mute);margin-top:10px;font-size:13.5px;cursor:pointer}
 </style>
 </head>
 <body>
+
+<!-- ============== SPLASH: the station clock starts ============== -->
+<div id="splash" role="img" aria-label="MRCEM OSCE — The Clinical Exam Companion">
+  <div class="sp-aur" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="sp-frame" aria-hidden="true"></div>
+  <div class="sp-skip" aria-hidden="true">Tap to skip</div>
+  <div class="sp-stage" aria-hidden="true">
+    <svg class="sp-mark" viewBox="0 0 512 512">
+      <defs>
+        <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6DE9A"/><stop offset=".55" stop-color="#D4AF37"/><stop offset="1" stop-color="#A97C22"/></linearGradient>
+        <linearGradient id="se" x1="0" x2="1"><stop offset="0" stop-color="#F6EFDC" stop-opacity=".4"/><stop offset=".45" stop-color="#FFF8E7"/><stop offset="1" stop-color="#F6DE9A"/></linearGradient>
+        <radialGradient id="sh"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".45" stop-color="#E9C766" stop-opacity=".9"/><stop offset="1" stop-color="#D4AF37" stop-opacity="0"/></radialGradient>
+        <filter id="sglow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <g transform="translate(0 18)">
+        <g class="sp-crown"><rect x="232" y="60" width="48" height="24" rx="7" fill="url(#sg)"/><rect x="249" y="82" width="14" height="22" fill="url(#sg)"/></g>
+        <g class="sp-ticks" stroke="#F6EFDC" stroke-width="7" stroke-linecap="round">
+          <path style="animation-delay:.30s" d="M256 128v16"/><path style="animation-delay:.42s" d="M346.5 165.5l-11.3 11.3"/><path style="animation-delay:.54s" d="M384 256h-16"/><path style="animation-delay:.66s" d="M346.5 346.5l-11.3-11.3"/>
+          <path style="animation-delay:.78s" d="M256 384v-16"/><path style="animation-delay:.90s" d="M165.5 346.5l11.3-11.3"/><path style="animation-delay:1.02s" d="M128 256h16"/><path style="animation-delay:1.14s" d="M165.5 165.5l11.3 11.3"/>
+        </g>
+        <circle class="sp-ring" cx="256" cy="256" r="150" fill="none" stroke="url(#sg)" stroke-width="20" stroke-linecap="round" pathLength="100" transform="rotate(-90 256 256)" filter="url(#sglow)"/>
+        <path class="sp-ecg" pathLength="1" d="M96 270H190L208 244L226 296L252 166L280 336L298 262L314 270H402" fill="none" stroke="url(#se)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#sglow)"/>
+        <circle class="sp-ping" cx="256" cy="256" r="150"/>
+        <g class="sp-dot"><circle cx="402" cy="270" r="30" fill="url(#sh)"/><circle cx="402" cy="270" r="10" fill="#FFF3C4"/></g>
+      </g>
+    </svg>
+    <div class="sp-word"><span style="animation-delay:1.20s">M</span><span style="animation-delay:1.28s">R</span><span style="animation-delay:1.36s">C</span><span style="animation-delay:1.44s">E</span><span style="animation-delay:1.52s">M</span></div>
+    <div class="sp-osce">OSCE</div>
+    <div class="sp-tag">Prepare · Practice · Perform</div>
+  </div>
+  <div class="sp-hud" id="spHud" aria-hidden="true"></div>
+  <div class="sp-me" id="spMe" aria-hidden="true">Dr Najm · The Tract</div>
+</div>
+
+<!-- ============== ONBOARDING (first run) ============== -->
+<div id="onb" class="hide">
+  <div class="ob" id="ob1">
+    <img src="img/icon-192.png" alt="">
+    <h1>Welcome, <span class="goldtxt">Dr Najm</span></h1>
+    <p>This app has one job: to walk you into Chennai trained for an excellent result — not hoping for a pass.</p>
+    <p class="small">16 stations · 8 minutes each · every word counts.</p>
+    <button class="btn" data-ob="2">Begin</button>
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+  </div>
+  <div class="ob hide" id="ob2">
+    <img src="img/icon-192.png" alt="">
+    <h1>When is your exam?</h1>
+    <p>Your daily targets and review schedule are built backwards from this date.</p>
+    <p><input type="date" id="obDate"></p>
+    <p class="small">Use the date on your RCEM allocation letter. You can change it later.</p>
+    <button class="btn" data-ob="3">Continue</button>
+    <div class="dots"><i></i><i class="on"></i><i></i></div>
+  </div>
+  <div class="ob hide" id="ob3">
+    <img src="img/icon-192.png" alt="">
+    <h1>Train like it's the real thing</h1>
+    <div class="opts">
+      <label class="tog"><span>Recall first<small>Answer out loud before options appear — the exam has no options.</small></span><span class="sw"><input type="checkbox" id="obRecall" checked><i></i></span></label>
+      <label class="tog"><span>Timed Say-it (60 s)<small>Speak under the clock; the model answer appears at time.</small></span><span class="sw"><input type="checkbox" id="obTimed" checked><i></i></span></label>
+    </div>
+    <button class="btn" id="obGo">Start training</button>
+    <div class="dots"><i></i><i></i><i class="on"></i></div>
+  </div>
+</div>
+
 <div class="wrap">
-  <div class="hdr"><img src="img/logo-160.png" alt="" class="logo"><div><h1>MRCEM OSCE Prep</h1><div class="sub">The Clinical Exam Companion</div><div class="sub" id="subline"></div></div></div>
-  <div class="tabs" id="tabs">
-    <button data-t="home" class="on">Home</button>
-    <button data-t="practice">Practice</button>
-    <button data-t="fw">Frameworks</button>
+  <div class="hdr">
+    <img src="img/icon-192.png" alt="">
+    <div><div class="wm goldtxt">MRCEM <b>OSCE</b></div><div class="tag">The Clinical Exam Companion</div></div>
+    <span class="chip gold" id="daysChip">—</span>
   </div>
 
-  <!-- HOME -->
+  <!-- ===================== HOME ===================== -->
   <section id="home">
-    <div class="card">
-      <div class="small">Countdown to Chennai</div>
-      <div class="big" id="cd">—</div>
-      <div class="row" style="align-items:center">
-        <span class="small">Exam date:</span><input type="date" id="exdate">
+    <div class="greet" id="greet"></div>
+
+    <div class="card goldline">
+      <div class="hero">
+        <div class="ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="10"/>
+            <circle id="rdArc" cx="60" cy="60" r="52" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" style="transition:stroke-dasharray 1s ease"/>
+            <defs><linearGradient id="rg"><stop offset="0" stop-color="#B8892A"/><stop offset="1" stop-color="#F0D58C"/></linearGradient></defs></svg>
+          <div class="v"><b id="rdVal">0</b><span>Readiness</span></div>
+        </div>
+        <div class="kv">
+          <div><div class="r"><span>Coverage</span><b id="kCov">0%</b></div><div class="mini"><i id="mCov"></i></div></div>
+          <div><div class="r"><span>Accuracy</span><b id="kAcc">–</b></div><div class="mini"><i id="mAcc"></i></div></div>
+          <div><div class="r"><span>Retained</span><b id="kRet">–</b></div><div class="mini"><i id="mRet"></i></div></div>
+        </div>
       </div>
-      <div class="note" id="paynote">Provisional place allocated for <b>Feb 2027 Chennai</b>. It's not confirmed until the exam fee is paid on your RCEM account.
-        <label style="display:block;margin-top:6px"><input type="checkbox" id="paid"> Fee paid</label></div>
+      <div class="target" id="rdNote"></div>
     </div>
 
-    <div class="kpis" style="margin-top:8px">
-      <div class="kpi"><div class="v" id="k1">0</div><div class="l">answered / <span id="ktot"></span></div></div>
-      <div class="kpi"><div class="v" id="k2">–</div><div class="l">accuracy</div></div>
-      <div class="kpi"><div class="v" id="k3">0</div><div class="l">due for review</div></div>
-    </div>
-    <button class="btn" id="goDue">Review due cards</button>
-    <button class="btn ghost" id="goNew">Practise unseen</button>
-
-    <h2>Domain mastery</h2>
-    <div class="card" style="padding:8px 12px"><table id="dtab"></table></div>
-    <div class="small" style="margin-top:6px">Tap a domain to practise it. Mastery = correct ÷ answered (partial counts half).</div>
-
-    <h2>Station timer</h2>
     <div class="card">
-      <div class="phase" id="tphase">1 min reading → 8 min station</div>
-      <div class="timer" id="tclock">1:00</div>
-      <div class="bar"><i id="tbar"></i></div>
-      <div class="row" style="justify-content:center;margin-top:12px">
-        <button class="btn sm" id="tstart">Start</button>
-        <button class="btn sm ghost" id="treset">Reset</button>
+      <div class="mhead"><span class="disp">Today's mission</span><span class="small" id="mDate"></span></div>
+      <div class="bar"><i id="mBar"></i></div>
+      <div class="small" id="mSum"></div>
+      <div id="tasks" style="margin-top:8px"></div>
+      <div class="streak" id="streak"></div>
+    </div>
+
+    <div class="card">
+      <div class="pearl"><div class="q" id="pearl"></div><div class="s">Examiner pearl · today</div></div>
+    </div>
+
+    <h2 class="sec">Weakest areas</h2>
+    <div class="card" id="weak"></div>
+
+    <h2 class="sec">Domain mastery</h2>
+    <div class="card" style="padding:6px 14px"><table id="dtab"></table></div>
+
+    <h2 class="sec">Station clock</h2>
+    <div class="card tbox" id="timerCard">
+      <div class="tring">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="8"/>
+          <circle id="tArc" cx="60" cy="60" r="52" fill="none" stroke="url(#rg)" stroke-width="8" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/></svg>
+        <div class="c"><b id="tclock">1:00</b><span id="tphase">Reading time</span></div>
       </div>
-      <div class="small" style="text-align:center">Use it for Say-it cards and the stations we run in chat.</div>
+      <div class="trow"><button class="btn sm" id="tstart">Start</button><button class="btn sm ghost" id="treset">Reset</button></div>
+      <div class="small" style="margin-top:8px;text-align:center">1 minute reading → 8 minute station. Vibrates at each change.</div>
     </div>
 
-    <h2>Send me your weak points</h2>
+    <h2 class="sec">Exam</h2>
     <div class="card">
-      <div class="small">Copies your missed/partial items so you can paste them into our chat — I'll build the next mock stations from them.</div>
+      <div class="tog"><span>Exam date</span><input type="date" id="exdate"></div>
+      <label class="tog"><span>RCEM fee paid — place confirmed</span><span class="sw"><input type="checkbox" id="paid"><i></i></span></label>
+      <div class="small" style="margin-top:6px">Format (RCEM): 16 active stations × 8 minutes, 1 minute reading between stations, 2 rest stations, domain-based marking. Check your own candidate instructions for ID, venue and arrival time.</div>
+    </div>
+
+    <h2 class="sec">Send me your weak points</h2>
+    <div class="card">
+      <div class="small">Copies your missed and partial items to paste into our chat — the next mock stations get built from them.</div>
       <button class="btn" id="copyWeak">Copy weak list</button>
       <textarea id="weakTxt" class="hide" readonly></textarea>
     </div>
 
     <div id="installBox" class="hide">
-    <h2>Install the app</h2>
-    <div class="card">
-      <div id="installTxt" class="small"></div>
-      <button class="btn hide" id="installBtn">Install on this device</button>
-    </div>
+      <h2 class="sec">Install</h2>
+      <div class="card"><div id="installTxt" class="small"></div><button class="btn hide" id="installBtn">Install on this device</button></div>
     </div>
 
-    <h2>Backup &amp; restore</h2>
+    <h2 class="sec">Backup &amp; restore</h2>
     <div class="card">
-      <div class="small">Your progress lives on this device. Export a backup file before changing phones, then import it on the new one.</div>
-      <div class="row"><button class="btn sm" id="expBtn">Export progress</button><label class="btn sm ghost" style="display:inline-block;text-align:center">Import<input type="file" id="impFile" accept="application/json,.json" class="hide"></label></div>
+      <div class="small">Progress lives on this device. Export before changing phones; import on the new one (it merges).</div>
+      <div class="row" style="margin-top:10px"><button class="btn sm" id="expBtn">Export progress</button><label class="btn sm ghost" style="display:inline-block">Import<input type="file" id="impFile" accept="application/json,.json" class="hide"></label></div>
       <div class="small" id="bkMsg"></div>
     </div>
-
-    <h2>The exam (verified)</h2>
-    <div class="card" style="font-size:14.5px">
-      16 active stations × 8 minutes, 1 minute reading between stations, 2 rest stations, no double stations, domain-based marking. Chennai sittings are held at Apollo.
-      <div class="small" style="margin-top:8px">Sources: RCEM OSCE FAQs, RCEMLearning. Check your own allocation letter for the date and venue.</div>
-    </div>
-    <p class="small" style="margin-top:14px">Clinical numbers checked against RCUK 2025, NICE (NG232, NG253, NG225, NG143, NG133, NG128…), TOXBASE-derived guidance, UKKA, BSPED, JBDS and GMC as of Nov 2026. Local protocols and TOXBASE stay the source of truth on shift.<br>
-    Progress is saved in this browser only. <a href="#" id="reset">Reset progress</a></p>
   </section>
 
-  <!-- PRACTICE -->
+  <!-- ===================== PRACTICE ===================== -->
   <section id="practice" class="hide">
     <div class="stats" id="pstats"></div>
-    <div class="bar" style="margin-bottom:8px"><i id="pprog"></i></div>
-    <div class="row" id="domains"></div>
-    <div class="row" id="modes"></div>
-    <label class="small" style="display:block;margin:2px 0 4px"><input type="checkbox" id="recall"> Recall first — hide SBA options until I've answered out loud</label>
+    <div class="bar" style="margin:0 0 4px"><i id="pprog"></i></div>
+    <div class="scroller" id="domains"></div>
+    <div class="scroller" id="modes" style="margin-top:6px"></div>
+    <div class="card" style="padding:6px 14px;margin-top:10px">
+      <label class="tog"><span>Recall first — hide options until I've answered aloud</span><span class="sw"><input type="checkbox" id="recall"><i></i></span></label>
+      <label class="tog"><span>Timed Say-it — 60 s on the clock</span><span class="sw"><input type="checkbox" id="timed"><i></i></span></label>
+    </div>
     <div id="view"></div>
-    <p class="small" style="margin-top:12px">Say-it cards: say the answer out loud, word for word, <b>before</b> you reveal. Then rate yourself honestly — the spaced repetition depends on it.</p>
   </section>
 
-  <!-- FRAMEWORKS -->
+  <!-- ===================== FRAMEWORKS ===================== -->
   <section id="fw" class="hide">
-    <div class="small">Adaptable structures, not scripts. Read one before a matching Say-it set.</div>
+    <div class="greet" style="font-size:24px">Station frameworks<small>Adaptable structures, not scripts. Read one, then do the matching Say-it set.</small></div>
     <div id="fwlist"></div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="hide">
+    <div class="card" style="padding:10px"><img class="poster" src="img/poster.jpg" alt="MRCEM OSCE — The Clinical Exam Companion poster"></div>
+    <div class="card">
+      <div class="disp" style="font-size:18px">About</div>
+      <p style="color:var(--ink2);font-size:14.5px">Built by Dr Najm for his own MRCEM OSCE preparation. <span id="aboutCount"></span> Content is checked against UK sources — Resuscitation Council UK 2025, NICE, TOXBASE-derived guidance, UKKA, BSPED, JBDS, BTS/SIGN, RCOG and GMC — as of November 2026.</p>
+      <p style="color:var(--ink2);font-size:14.5px"><b>Independent study app — not affiliated with or endorsed by the Royal College of Emergency Medicine.</b> Educational use only: local protocols and TOXBASE remain the source of truth in clinical practice.</p>
+      <p class="small">Published by The Tract · Fonts: Inter, GFS Baskerville (SIL OFL 1.1).</p>
+      <p class="small"><a href="#" id="replay">Replay the opening</a> · <a href="#" id="reob">Run setup again</a> · <a href="#" id="reset">Reset progress</a></p>
+    </div>
   </section>
 </div>
 
-<div class="foot" id="foot"><div class="in">
-  <button class="btn ghost" id="prev">Back</button>
-  <button class="btn" id="next">Next</button>
-</div></div>
+<div class="pnav hide" id="pnav"><div class="in"><button class="btn ghost" id="prev" style="margin:0;background:rgba(10,19,38,.9)">Back</button><button class="btn" id="next" style="margin:0">Next</button></div></div>
+
+<nav class="tabbar"><div class="in">
+  <button data-t="home" class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M10 3h4"/></svg>Today</button>
+  <button data-t="practice"><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h12v14H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h12"/><path d="M9 8h6M9 11h4"/></svg>Practice</button>
+  <button data-t="fw"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l3 3-3 3"/></svg>Frameworks</button>
+  <button data-t="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>About</button>
+</div></nav>
 
 <div class="dlg" id="dlg"><div class="box">
-  <p style="margin-top:0">Clear all answers, ratings and review schedule?</p>
+  <p style="margin-top:0">Clear all answers, ratings and the review schedule?</p>
   <div class="rate"><button id="dNo">Cancel</button><button id="dYes" class="r3">Clear</button></div>
 </div></div>
+<div class="toast" id="toast"></div>
 
 <script>
 const QB=[];
-function add(d,arr){
-  arr.forEach(x=>{
-    if(Array.isArray(x)){
-      if(x[0]==="s")QB.push({id:x[1],d,t:"sba",q:x[2],o:x[3],a:x[4],e:x[5],s:x[6]});
-      else QB.push({id:x[1],d,t:"say",q:x[2],m:x[3],e:x[4]});
-    }else{QB.push(Object.assign({},x,{id:String(x.id)}))}
-  });
-}
+function add(d,arr){arr.forEach(x=>{if(Array.isArray(x)){if(x[0]==="s")QB.push({id:x[1],d,t:"sba",q:x[2],o:x[3],a:x[4],e:x[5],s:x[6]});else QB.push({id:x[1],d,t:"say",q:x[2],m:x[3],e:x[4]})}else QB.push(Object.assign({},x,{id:String(x.id)}))})}
 </script>
 <script src="data/core.js"></script>
 <script src="data/resus.js"></script>
@@ -216,168 +466,261 @@ function add(d,arr){
 <script src="data/history.js"></script>
 <script src="data/frameworks.js"></script>
 <script>
+"use strict";
+const $=id=>document.getElementById(id);
 const DOM={tox:"Toxicology",law:"Capacity & Law",resus:"Resus",paeds:"Paediatrics",obs:"Obs & Gynae",trauma:"Trauma",cardio:"Cardio & ECG",med:"Acute Medicine",env:"Environmental",neuro:"Neuro",psych:"Psychiatry",surg:"Surg / MSK / Eye / ENT",comms:"Communication & Ethics"};
-const MODES={mix:"Mixed",due:"Due",new:"Unseen",miss:"Missed / partial",sba:"SBA only",say:"Say-it only"};
-const KEY="mrcem_bank_b1",DKEY="mrcem_exam_date",PKEY="mrcem_paid";
+// framework suggested for each domain (index into FW by tag)
+const DFW={tox:"Self-harm",law:"Capacity",resus:"Resus",paeds:"History",obs:"BBN",trauma:"Resus",cardio:"Data",med:"SBAR",env:"Resus",neuro:"History",psych:"Self-harm",surg:"Consent",comms:"BBN"};
+const MODES={mix:"Smart mix",due:"Due",new:"Unseen",miss:"Missed / partial",sba:"SBA only",say:"Say-it only"};
+const K={store:"mrcem_bank_b1",date:"mrcem_exam_date",paid:"mrcem_paid",recall:"mrcem_recall",timed:"mrcem_timed",days:"mrcem_days",onb:"mrcem_onboarded"};
 const DAY=864e5,BOX=[0,0,1,3,7,14];
-let store={};
+const PEARLS=[
+"Underline the task verb. Assess, explain, manage, teach — the verb is the mark scheme.",
+"Say your thinking out loud. The examiner can only score what they hear.",
+"Open in one sentence: your name, your role, why you're here.",
+"In every station ask yourself: what could kill this patient — and have I said it?",
+"After bad news, say it plainly — then stop. Silence is a clinical skill.",
+"Safety-netting is specific: what to look for, when, and where to come back.",
+"At six minutes, start closing: summarise, plan, check for questions.",
+"Escalate by name and time: “I'd like the medical registrar to see her now.”",
+"Unwell, confused or fitting? Say “capillary glucose” before anything clever.",
+"Involving a senior is a strength the examiner is looking for, not a weakness.",
+"Plain words with patients, precise words with colleagues.",
+"Use the patient's name — and get it right.",
+"One station never decides the exam. Reset fully in the minute between.",
+"Ideas, concerns, expectations: the hidden agenda often carries the marks.",
+"“Can you tell me in your own words?” beats “Do you understand?”",
+"In resus, reassess after every intervention — and say that you are.",
+"Paediatric doses: state the weight, the formula, and the number.",
+"Capacity is decision-specific. Name the decision before you test it.",
+"Apologise for the experience without blaming a colleague.",
+"Finish with a plan the examiner could write down word for word.",
+"A summary the patient agrees with is worth more than a perfect list.",
+"Don't fill silence with information. Fill it with presence."
+];
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
-try{store=JSON.parse(ls(KEY)||"{}")||{}}catch(e){store={}}
-// migrate batch-1 string results
+function ss(k,v){try{if(v===undefined)return sessionStorage.getItem(k);sessionStorage.setItem(k,v)}catch(e){return null}}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>")}
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),1800)}
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+
+// ---------- state
+let store={};try{store=JSON.parse(ls(K.store)||"{}")||{}}catch(e){store={}}
 for(const k in store){if(typeof store[k]==="string"){const r=store[k];store[k]={r,b:r==="c"?2:1,due:Date.now(),n:1}}}
-function save(){ls(KEY,JSON.stringify(store))}
-function record(id,r){
-  const p=store[id]||{b:1,n:0};let b=p.b||1;
+let days={};try{days=JSON.parse(ls(K.days)||"{}")||{}}catch(e){days={}}
+const save=()=>{ls(K.store,JSON.stringify(store));ls(K.days,JSON.stringify(days))};
+const td=()=>days[today()]||(days[today()]={n:0,nw:0,say:0,fw:0});
+let recall=ls(K.recall)==="1",timed=ls(K.timed)==="1";
+function record(q,r){
+  const p=store[q.id],isNew=!p;let b=(p&&p.b)||1;
   if(r==="c")b=Math.min(5,b+1);else if(r==="w")b=1;
-  store[id]={r,b,n:(p.n||0)+1,due:Date.now()+BOX[b]*DAY+(r==="c"?0:10*60e3)};save();
+  store[q.id]={r,b,n:((p&&p.n)||0)+1,due:Date.now()+BOX[b]*DAY+(r==="c"?0:10*60e3)};
+  const t=td();t.n++;if(isNew)t.nw++;if(q.t==="say")t.say++;save();
 }
 const isDue=id=>store[id]&&store[id].due<=Date.now();
+function daysLeft(){const d=ls(K.date);if(!d)return null;return Math.ceil((new Date(d+"T09:00:00")-Date.now())/DAY)}
 
-// ---------- tabs
+// ---------- metrics
+function metrics(list){list=list||QB;let a=0,s=0,ret=0;list.forEach(q=>{const x=store[q.id];if(!x)return;a++;s+=x.r==="c"?1:x.r==="p"?.5:0;if(x.b>=3)ret++});
+  const cov=list.length?a/list.length:0,acc=a?s/a:0,rt=a?ret/a:0;return{a,cov,acc,rt,ready:Math.round(100*cov*(.6*acc+.4*rt))}}
+function plan(){const unseen=QB.filter(q=>!store[q.id]).length,due=QB.filter(q=>isDue(q.id)).length,dl=daysLeft();
+  let nw=20;if(dl!==null&&dl>0){const avail=Math.max(1,dl-10);nw=Math.min(40,Math.max(10,Math.ceil(unseen/avail)))}if(!unseen)nw=0;
+  return{unseen,due,nw,dl}}
+
+// ---------- splash
+function splash(force){
+  const sp=$("splash");
+  if(!force&&ss("mrcem_splash")){sp.remove();return Promise.resolve()}
+  ss("mrcem_splash","1");sp.classList.remove("out");
+  const hud=$("spHud"),dl=daysLeft();
+  $("spMe").textContent="Dr Najm"+(dl!==null&&dl>0?" · Chennai in "+dl+" days":"")+" · The Tract";
+  const seq=[[150,"16 stations · 8 minutes each"],[1150,"Reading time · 1:00"],[2050,"<span class='dotg'></span><b>Station ready</b>"]];
+  const timers=seq.map(([t,h])=>setTimeout(()=>{hud.innerHTML=h},t));
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  return new Promise(res=>{
+    let done=false;const close=()=>{if(done)return;done=true;timers.forEach(clearTimeout);sp.classList.add("out");setTimeout(()=>{sp.style.display="none";res()},520)};
+    sp.style.display="";sp.onclick=close;setTimeout(close,reduce?700:3300);
+  });
+}
+
+// ---------- onboarding
+function onboarding(){
+  return new Promise(res=>{
+    if(ls(K.onb)==="1"){res();return}
+    const o=$("onb");o.classList.remove("hide");
+    const d=ls(K.date);if(d)$("obDate").value=d;
+    $("obRecall").checked=ls(K.recall)!=="0";$("obTimed").checked=ls(K.timed)!=="0";
+    o.querySelectorAll("[data-ob]").forEach(b=>b.onclick=()=>{["ob1","ob2","ob3"].forEach(x=>$(x).classList.add("hide"));$("ob"+b.dataset.ob).classList.remove("hide")});
+    $("obGo").onclick=()=>{const v=$("obDate").value;if(v)ls(K.date,v);ls(K.recall,$("obRecall").checked?"1":"0");ls(K.timed,$("obTimed").checked?"1":"0");
+      recall=$("obRecall").checked;timed=$("obTimed").checked;ls(K.onb,"1");o.classList.add("hide");res()};
+  });
+}
+
+// ---------- tabs / routing
 let tab="home";
-function show(t){tab=t;["home","practice","fw"].forEach(s=>document.getElementById(s).classList.toggle("hide",s!==t));
-  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));
-  document.getElementById("foot").style.display=t==="practice"?"":"none";
-  if(t==="home")home();if(t==="practice")render();window.scrollTo(0,0)}
-document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>show(b.dataset.t));
+function show(t){tab=t;["home","practice","fw","about"].forEach(s=>$(s).classList.toggle("hide",s!==t));
+  document.querySelectorAll(".tabbar button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));
+  $("pnav").classList.toggle("hide",t!=="practice");document.body.classList.toggle("inpr",t==="practice");
+  if(t==="home")home();if(t==="practice")render();if(t==="fw"){td().fw=1;save()}
+  if(location.hash!=="#"+t)history.replaceState(null,"","#"+t);window.scrollTo(0,0)}
+document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>show(b.dataset.t));
 
 // ---------- home
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>")}
 function home(){
-  const d=ls(DKEY);const inp=document.getElementById("exdate");if(d)inp.value=d;
-  const cd=document.getElementById("cd");
-  if(d){const days=Math.ceil((new Date(d+"T09:00:00")-Date.now())/DAY);cd.textContent=days>0?days+" days":"Exam day";}else cd.textContent="Set your date";
-  const paid=ls(PKEY)==="1";document.getElementById("paid").checked=paid;
-  document.getElementById("paynote").style.opacity=paid?.55:1;
-  let ans=0,score=0,due=0;
-  QB.forEach(q=>{const s=store[q.id];if(s){ans++;score+=s.r==="c"?1:s.r==="p"?.5:0;if(s.due<=Date.now())due++}});
-  document.getElementById("k1").textContent=ans;document.getElementById("ktot").textContent=QB.length;
-  document.getElementById("k2").textContent=ans?Math.round(score/ans*100)+"%":"–";
-  document.getElementById("k3").textContent=due;
-  let h="<tr><th>Domain</th><th class='n'>Done</th><th class='n'>Mastery</th><th></th></tr>";
-  Object.keys(DOM).forEach(k=>{const qs=QB.filter(q=>q.d===k);if(!qs.length)return;let a=0,s=0;
-    qs.forEach(q=>{const x=store[q.id];if(x){a++;s+=x.r==="c"?1:x.r==="p"?.5:0}});
-    const m=a?Math.round(s/a*100):null;const col=m===null?"var(--line)":m>=80?"var(--acc)":m>=60?"var(--warn)":"var(--bad)";
-    h+=`<tr data-d="${k}" style="cursor:pointer"><td>${DOM[k]}</td><td class="n">${a}/${qs.length}</td><td class="n">${m===null?"–":m+"%"}</td><td><div class="mini"><i style="width:${m||0}%;background:${col}"></i></div></td></tr>`});
-  const t=document.getElementById("dtab");t.innerHTML=h;
-  t.querySelectorAll("tr[data-d]").forEach(r=>r.onclick=()=>{st.dom=r.dataset.d;st.mode="mix";chipsAll();build();show("practice")});
-  document.getElementById("subline").textContent=`${QB.length} items · ${QB.filter(q=>q.t==="say").length} Say-it · ${Object.keys(DOM).length} domains · ${FW.length} frameworks`;
+  const dl=daysLeft(),h=new Date().getHours();
+  $("greet").innerHTML=(h<12?"Good morning":h<18?"Good afternoon":"Good evening")+", <span class='goldtxt'>Dr Najm</span><small>"+(dl===null?"Set your exam date to unlock your countdown and daily targets.":dl>0?dl+" days to Chennai. Make today count.":dl===0?"Exam day. Trust the training.":"Exam done — well played.")+"</small>";
+  $("daysChip").textContent=dl===null?"Set date":dl>0?dl+" days":"Exam day";
+  const m=metrics();
+  $("rdVal").textContent=m.ready;$("rdArc").setAttribute("stroke-dasharray",m.ready+" 100");$("rdArc").style.opacity=m.ready?1:0;
+  $("kCov").textContent=Math.round(m.cov*100)+"%";$("mCov").style.width=m.cov*100+"%";
+  $("kAcc").textContent=m.a?Math.round(m.acc*100)+"%":"–";$("mAcc").style.width=m.acc*100+"%";
+  $("kRet").textContent=m.a?Math.round(m.rt*100)+"%":"–";$("mRet").style.width=m.rt*100+"%";
+  $("rdNote").innerHTML=`Readiness = coverage × (60% accuracy + 40% retained). <b style="color:var(--gold2)">Aim for 85+ by exam week.</b>`;
+  // mission
+  const p=plan(),t=td(),goal=p.nw+Math.min(p.due+t.n-t.nw,60);
+  $("mDate").textContent=new Date().toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short"});
+  const doneN=t.n,goalN=Math.max(goal,10);$("mBar").style.width=Math.min(100,doneN/goalN*100)+"%";
+  $("mSum").textContent=`${doneN} answered today · ${p.unseen} items still unseen`;
+  const weakest=weakList()[0];const fwTag=weakest?DFW[weakest.k]:"Routine";
+  const tasks=[
+    {done:p.due===0,t:p.due?`Clear ${p.due} due review${p.due>1?"s":""}`:"Reviews cleared",s:"Spaced repetition — the cards you're about to forget",go:()=>startPractice("all","due")},
+    {done:t.nw>=p.nw,t:!p.nw?"Every item seen":t.nw>=p.nw?`${t.nw} new items today — target met`:`${p.nw-t.nw} new item${p.nw-t.nw===1?"":"s"} to go (target ${p.nw})`,s:p.dl?"Paced to finish the bank 10 days before the exam":"Set your exam date to pace this",go:()=>startPractice("all","new")},
+    {done:t.say>=3,t:"3 timed Say-it stations",s:"Out loud, under the clock",go:()=>{timed=true;ls(K.timed,"1");startPractice("all","say")}},
+    {done:t.fw>0,t:"Read one framework",s:weakest?`Suggested for your weakest area: ${DOM[weakest.k]}`:"Start with the 1-minute reading routine",go:()=>{show("fw");setTimeout(()=>{const el=document.querySelector(`.fw[data-tag="${fwTag}"]`);if(el){el.open=true;el.scrollIntoView({block:"start",behavior:"smooth"})}},50)}}
+  ];
+  $("tasks").innerHTML=tasks.map((x,i)=>`<div class="task ${x.done?"done":""}"><span class="tick"></span><div class="tx">${x.t}<small>${x.s}</small></div>${x.done?"":`<button class="btn sm ghost" data-task="${i}">Go</button>`}</div>`).join("");
+  $("tasks").querySelectorAll("[data-task]").forEach(b=>b.onclick=()=>tasks[+b.dataset.task].go());
+  // streak (last 7 days, a day counts with >=10 answers)
+  let st="",run=0;for(let i=6;i>=0;i--){const d=new Date(Date.now()-i*DAY),k=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");st+=`<i class="${days[k]&&days[k].n>=10?"on":""}" title="${k}"></i>`}
+  for(let i=0;;i++){const d=new Date(Date.now()-i*DAY),k=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");if(days[k]&&days[k].n>=10)run++;else if(i>0)break;if(i>400)break}
+  $("streak").innerHTML=st+`<span class="small" style="margin-left:6px">${run} day streak · 10+ a day counts</span>`;
+  // pearl
+  const di=Math.floor(Date.now()/DAY);$("pearl").textContent=PEARLS[di%PEARLS.length];
+  // weakest
+  const wl=weakList();
+  $("weak").innerHTML=wl.length?wl.slice(0,3).map(w=>`<div class="wrow"><div class="n">${DOM[w.k]}<small>${w.a}/${w.n} answered${w.miss?` · ${w.miss} to fix`:""}</small></div><span class="pct" style="color:${w.m>=80?"var(--ok)":w.m>=60?"var(--warn)":"var(--bad)"}">${w.m}%</span><button class="btn sm" data-drill="${w.k}">Drill</button></div>`).join(""):`<div class="small">Answer 5+ items in a domain and your weakest areas appear here, with a one-tap drill.</div>`;
+  $("weak").querySelectorAll("[data-drill]").forEach(b=>b.onclick=()=>startPractice(b.dataset.drill,"drill"));
+  // table
+  let tb="<tr><th>Domain</th><th class='n'>Done</th><th class='n'>Mastery</th><th></th></tr>";
+  Object.keys(DOM).forEach(k=>{const qs=QB.filter(q=>q.d===k);if(!qs.length)return;const x=metrics(qs),mm=x.a?Math.round(x.acc*100):null;
+    const col=mm===null?"transparent":mm>=80?"var(--ok)":mm>=60?"var(--warn)":"var(--bad)";
+    tb+=`<tr data-d="${k}" style="cursor:pointer"><td>${DOM[k]}</td><td class="n">${x.a}/${qs.length}</td><td class="n">${mm===null?"–":mm+"%"}</td><td><div class="mb"><i style="width:${mm||0}%;background:${col}"></i></div></td></tr>`});
+  $("dtab").innerHTML=tb;$("dtab").querySelectorAll("tr[data-d]").forEach(r=>r.onclick=()=>startPractice(r.dataset.d,"mix"));
+  const d=ls(K.date);if(d)$("exdate").value=d;$("paid").checked=ls(K.paid)==="1";
 }
-document.getElementById("exdate").onchange=e=>{ls(DKEY,e.target.value);home()};
-document.getElementById("paid").onchange=e=>{ls(PKEY,e.target.checked?"1":"0");home()};
-document.getElementById("goDue").onclick=()=>{st.dom="all";st.mode="due";chipsAll();build();show("practice")};
-document.getElementById("goNew").onclick=()=>{st.dom="all";st.mode="new";chipsAll();build();show("practice")};
-document.getElementById("copyWeak").onclick=()=>{
+function weakList(){const out=[];Object.keys(DOM).forEach(k=>{const qs=QB.filter(q=>q.d===k),x=metrics(qs);if(x.a>=5)out.push({k,n:qs.length,a:x.a,m:Math.round(x.acc*100),miss:qs.filter(q=>store[q.id]&&store[q.id].r!=="c").length})});return out.sort((a,b)=>a.m-b.m)}
+$("exdate").onchange=e=>{ls(K.date,e.target.value);home()};
+$("paid").onchange=e=>{ls(K.paid,e.target.checked?"1":"0");toast(e.target.checked?"Place confirmed ✓":"Noted")};
+
+// ---------- copy weak list
+$("copyWeak").onclick=()=>{
   const w=QB.filter(q=>store[q.id]&&(store[q.id].r==="w"||store[q.id].r==="p"));
   const txt=w.length?"My MRCEM weak items ("+w.length+"):\n"+w.map(q=>`- [${DOM[q.d]}] ${store[q.id].r==="w"?"MISSED":"PARTIAL"} ${q.id}: ${q.q.replace(/\n/g," ").slice(0,110)}`).join("\n"):"No missed or partial items yet.";
-  const ta=document.getElementById("weakTxt");ta.value=txt;
-  const b=document.getElementById("copyWeak");
-  const done=()=>{b.textContent="Copied ✓";setTimeout(()=>b.textContent="Copy weak list",1800)};
-  try{navigator.clipboard.writeText(txt).then(done).catch(()=>{ta.classList.remove("hide");ta.select()})}catch(e){ta.classList.remove("hide");ta.select()}
+  const ta=$("weakTxt");ta.value=txt;
+  try{navigator.clipboard.writeText(txt).then(()=>toast("Copied — paste it in our chat")).catch(()=>{ta.classList.remove("hide");ta.select()})}catch(e){ta.classList.remove("hide");ta.select()}
 };
 
-// ---------- station timer
-let tState={phase:0,left:60,int:null};
-function tDraw(){const m=Math.floor(tState.left/60),s=tState.left%60;document.getElementById("tclock").textContent=m+":"+String(s).padStart(2,"0");
-  const tot=tState.phase===1?480:60;document.getElementById("tbar").style.width=((tot-tState.left)/tot*100)+"%";
-  document.getElementById("tphase").textContent=tState.phase===0?"Reading time":tState.phase===1?(tState.left<=60?"Final minute — summarise & close":"Station in progress"):"Time up — next station";
-  document.getElementById("tclock").style.color=tState.phase===1&&tState.left<=60?"var(--bad)":""}
-function tTick(){if(tState.left>0){tState.left--;}else if(tState.phase===0){tState.phase=1;tState.left=480;try{navigator.vibrate&&navigator.vibrate(200)}catch(e){}}else{tState.phase=2;clearInterval(tState.int);tState.int=null;document.getElementById("tstart").textContent="Start";try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}}tDraw()}
-document.getElementById("tstart").onclick=e=>{if(tState.int){clearInterval(tState.int);tState.int=null;e.target.textContent="Resume"}else{if(tState.phase===2){tState={phase:0,left:60,int:null}}tState.int=setInterval(tTick,1000);e.target.textContent="Pause"}};
-document.getElementById("treset").onclick=()=>{clearInterval(tState.int);tState={phase:0,left:60,int:null};document.getElementById("tstart").textContent="Start";tDraw()};
+// ---------- station clock
+let T={phase:0,left:60,int:null};
+function tDraw(){const m=Math.floor(T.left/60),s=T.left%60;$("tclock").textContent=m+":"+String(s).padStart(2,"0");
+  const tot=T.phase===1?480:60,fr=(tot-T.left)/tot*100;$("tArc").setAttribute("stroke-dasharray",fr+" 100");$("tArc").style.opacity=fr?1:0;
+  $("tphase").textContent=T.phase===0?"Reading time":T.phase===1?(T.left<=60?"Final minute — close & safety-net":T.left<=120?"Start closing":"Station"):"Time — next station";
+  $("tclock").style.color=T.phase===1&&T.left<=60?"var(--bad)":""}
+function vib(p){try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}}
+function tTick(){if(T.left>0)T.left--;else if(T.phase===0){T.phase=1;T.left=480;vib(250)}else{T.phase=2;clearInterval(T.int);T.int=null;$("tstart").textContent="Start";vib([200,100,200])}
+  if(T.phase===1&&T.left===120)vib(120);tDraw()}
+$("tstart").onclick=e=>{if(T.int){clearInterval(T.int);T.int=null;e.target.textContent="Resume"}else{if(T.phase===2)T={phase:0,left:60,int:null};T.int=setInterval(tTick,1000);e.target.textContent="Pause"}};
+$("treset").onclick=()=>{clearInterval(T.int);T={phase:0,left:60,int:null};$("tstart").textContent="Start";tDraw()};
 
 // ---------- practice
-let st={dom:"all",mode:"mix"},order=[],pos=0,shown=false,picked=null,perm=null,opened=false;
-const RKEY="mrcem_recall";let recall=ls(RKEY)==="1";
+let st={dom:"all",mode:"mix"},order=[],pos=0,shown=false,picked=null,perm=null,opened=false,cd=null;
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function pool(){let l=QB.filter(q=>st.dom==="all"||q.d===st.dom);
-  if(st.mode==="sba")l=l.filter(q=>q.t==="sba");
-  if(st.mode==="say")l=l.filter(q=>q.t==="say");
-  if(st.mode==="miss")l=l.filter(q=>store[q.id]&&(store[q.id].r==="w"||store[q.id].r==="p"));
-  if(st.mode==="new")l=l.filter(q=>!store[q.id]);
-  if(st.mode==="due")l=l.filter(q=>isDue(q.id));
-  return l}
+  if(st.mode==="sba")l=l.filter(q=>q.t==="sba");if(st.mode==="say")l=l.filter(q=>q.t==="say");
+  if(st.mode==="miss")l=l.filter(q=>store[q.id]&&store[q.id].r!=="c");if(st.mode==="new")l=l.filter(q=>!store[q.id]);
+  if(st.mode==="due")l=l.filter(q=>isDue(q.id));return l}
 function build(){const l=pool();
-  if(st.mode==="mix"){const due=shuffle(l.filter(q=>isDue(q.id))),fresh=shuffle(l.filter(q=>!store[q.id])),rest=shuffle(l.filter(q=>store[q.id]&&!isDue(q.id)));order=[...due,...fresh,...rest].map(q=>q.id)}
+  if(st.mode==="mix"||st.mode==="drill"){const miss=shuffle(l.filter(q=>store[q.id]&&store[q.id].r!=="c")),due=shuffle(l.filter(q=>isDue(q.id)&&store[q.id].r==="c")),fresh=shuffle(l.filter(q=>!store[q.id])),rest=shuffle(l.filter(q=>store[q.id]&&store[q.id].r==="c"&&!isDue(q.id)));
+    order=(st.mode==="drill"?[...miss,...fresh,...due]:[...due,...miss,...fresh,...rest]).map(q=>q.id)}
   else order=shuffle(l.map(q=>q.id));
-  pos=0;shown=false;picked=null;perm=null;opened=false;render()}
-function chips(el,obj,key,count){el.innerHTML="";
-  for(const k in obj){const b=document.createElement("button");b.className="chip"+(st[key]===k?" on":"");
-    let c="";if(count){c=k==="all"?QB.length:QB.filter(q=>q.d===k).length;c=` <small>${c}</small>`}
-    b.innerHTML=obj[k]+c;b.onclick=()=>{st[key]=k;chipsAll();build()};el.appendChild(b)}}
-function chipsAll(){chips(document.getElementById("domains"),Object.assign({all:"All"},DOM),"dom",true);chips(document.getElementById("modes"),MODES,"mode")}
+  pos=0;reset();render()}
+function reset(){shown=false;picked=null;perm=null;opened=false;stopCd()}
+function stopCd(){if(cd){clearInterval(cd.int);cd=null}}
+function chips(){const D=Object.assign({all:"All"},DOM);
+  $("domains").innerHTML=Object.keys(D).map(k=>`<button class="pill ${st.dom===k?"on":""}" data-d="${k}">${D[k]} <small>${k==="all"?QB.length:QB.filter(q=>q.d===k).length}</small></button>`).join("");
+  const M=Object.assign({},MODES);if(st.mode==="drill")M.drill="Drill";
+  $("modes").innerHTML=Object.keys(M).map(k=>`<button class="pill ${st.mode===k?"on":""}" data-m="${k}">${M[k]}</button>`).join("");
+  $("domains").querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{st.dom=b.dataset.d;chips();build()});
+  $("modes").querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{st.mode=b.dataset.m;chips();build()})}
+function startPractice(d,m){st.dom=d;st.mode=m;chips();build();show("practice")}
 function pstats(){const l=QB.filter(q=>st.dom==="all"||q.d===st.dom);let c=0,w=0,p=0;
   l.forEach(q=>{const s=store[q.id];if(!s)return;if(s.r==="c")c++;else if(s.r==="w")w++;else p++});
-  document.getElementById("pstats").innerHTML=`<span>${st.dom==="all"?"All":DOM[st.dom]}: <b>${c+w+p}/${l.length}</b></span><span>· ✓ <b>${c}</b></span><span>· ½ <b>${p}</b></span><span>· ✗ <b>${w}</b></span>`;
-  document.getElementById("pprog").style.width=l.length?((c+w+p)/l.length*100)+"%":"0"}
-function render(){pstats();const v=document.getElementById("view");
-  if(!order.length){v.innerHTML=`<div class="card empty">${st.mode==="due"?"Nothing due right now — nice. Try Unseen.":"Nothing here for this filter."}</div>`;return}
-  const q=QB.find(x=>x.id===order[pos]);const s=store[q.id];
-  let h=`<div class="card"><span class="tag">${DOM[q.d]} · ${q.t==="sba"?"SBA":"Say it"} · ${pos+1}/${order.length}${s?` <span class="pill">box ${s.b}</span>`:""}</span><p class="q">${esc(q.q)}</p>`;
+  $("pstats").innerHTML=`<span>${st.dom==="all"?"All domains":DOM[st.dom]}: <b>${c+w+p}/${l.length}</b></span><span>✓ <b>${c}</b></span><span>½ <b>${p}</b></span><span>✗ <b>${w}</b></span>`;
+  $("pprog").style.width=l.length?((c+w+p)/l.length*100)+"%":"0"}
+function render(){pstats();const v=$("view");stopCd();
+  if(!order.length){v.innerHTML=`<div class="card empty">${st.mode==="due"?"Nothing due right now. Try <b>Unseen</b>.":"Nothing here for this filter."}</div>`;return}
+  const q=QB.find(x=>x.id===order[pos]),s=store[q.id];
+  let h=`<div class="card qcard goldline"><div class="tagline"><span>${DOM[q.d]}</span><span>·</span><span>${q.t==="sba"?"SBA":"Say it"}</span><span>·</span><span>${pos+1}/${order.length}</span>${s?`<span class="bx">box ${s.b}</span>`:""}</div><div class="q">${esc(q.q)}</div>`;
   if(q.t==="sba"){
-    if(!perm||perm.q!==q.id)perm={q:q.id,p:shuffle(q.o.map((_,i)=>i))};
-    const ca=perm.p.indexOf(q.a);
-    if(recall&&!opened&&picked===null){h+=`<button class="btn ghost" id="openOpts">I've said my answer — show options</button>`}
-    else{perm.p.forEach((oi,i)=>{let cl="opt";if(picked!==null){if(i===ca)cl+=" c";else if(i===picked)cl+=" w"}h+=`<button class="${cl}" data-i="${i}">${String.fromCharCode(65+i)}. ${esc(q.o[oi])}</button>`})}
-    if(picked!==null){const ok=picked===ca;h+=`<div class="verdict ${ok?"ok":"no"}">${ok?"Correct.":"Not quite — answer "+String.fromCharCode(65+ca)+"."}</div><div class="exp">${esc(q.e)}<span class="src">${esc(q.s||"")}</span></div>`}
+    if(!perm||perm.q!==q.id)perm={q:q.id,p:shuffle(q.o.map((_,i)=>i))};const ca=perm.p.indexOf(q.a);
+    if(recall&&!opened&&picked===null)h+=`<button class="btn ghost" id="openOpts">I've said my answer — show options</button>`;
+    else perm.p.forEach((oi,i)=>{let cl="opt";if(picked!==null){if(i===ca)cl+=" c";else if(i===picked)cl+=" w"}h+=`<button class="${cl}" data-i="${i}"><b>${String.fromCharCode(65+i)}</b>${esc(q.o[oi])}</button>`});
+    if(picked!==null){const ok=picked===ca;h+=`<div class="verdict ${ok?"ok":"no"}">${ok?"Correct.":"Not quite — the answer is "+String.fromCharCode(65+ca)+"."}</div><div class="exp">${esc(q.e)}<span class="src">${esc(q.s||"")}</span></div>`}
   }else{
-    if(!shown)h+=`<button class="btn" id="reveal">I've said it — reveal model answer</button>`;
+    if(!shown){h+=timed?`<div class="cd"><div class="small" id="cdTxt">Speak now — 60 s</div><div class="bar"><i id="cdBar" style="width:100%"></i></div></div><button class="btn" id="reveal">Done — reveal model answer</button>`:`<button class="btn" id="reveal">I've said it — reveal model answer</button>`}
     else{h+=`<div class="model">${esc(q.m)}</div><div class="exp">${esc(q.e)}</div><div class="rate"><button class="r1" data-r="c">Nailed it</button><button class="r2" data-r="p">Partial</button><button class="r3" data-r="w">Missed</button></div>`;
-      if(s&&s._now)h+=`<div class="small" style="margin-top:8px">Saved: ${{c:"Nailed it",p:"Partial",w:"Missed"}[s.r]}</div>`}}
-  h+=`</div>`;v.innerHTML=h;
-  v.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{if(picked!==null)return;picked=+b.dataset.i;record(q.id,picked===perm.p.indexOf(q.a)?"c":"w");render()});
-  const oo=document.getElementById("openOpts");if(oo)oo.onclick=()=>{opened=true;render()};
-  const r=document.getElementById("reveal");if(r)r.onclick=()=>{shown=true;render()};
-  v.querySelectorAll(".rate button").forEach(b=>b.onclick=()=>{record(q.id,b.dataset.r);store[q.id]._now=1;render();delete store[q.id]._now})}
-function step(d){if(!order.length)return;pos=(pos+d+order.length)%order.length;shown=false;picked=null;perm=null;opened=false;render();window.scrollTo(0,0)}
-document.getElementById("next").onclick=()=>step(1);
-document.getElementById("prev").onclick=()=>step(-1);
+      if(s&&s._now)h+=`<div class="small" style="margin-top:8px">Saved: ${{c:"Nailed it",p:"Partial",w:"Missed"}[s.r]} · next review ${s.b>=2?"in "+BOX[s.b]+" day"+(BOX[s.b]>1?"s":""):"later today"}</div>`}}
+  h+="</div>";v.innerHTML=h;
+  v.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{if(picked!==null)return;picked=+b.dataset.i;record(q,picked===perm.p.indexOf(q.a)?"c":"w");render()});
+  const oo=$("openOpts");if(oo)oo.onclick=()=>{opened=true;render()};
+  const r=$("reveal");if(r)r.onclick=()=>{shown=true;render()};
+  if(q.t==="say"&&!shown&&timed){let left=60;cd={int:setInterval(()=>{left--;const b=$("cdBar"),t=$("cdTxt");if(!b){stopCd();return}b.style.width=(left/60*100)+"%";t.textContent=left>10?`Speak now — ${left} s`:`${left} s — close it out`;if(left<=0){stopCd();vib(150);shown=true;render()}},1000)}}
+  v.querySelectorAll(".rate button").forEach(b=>b.onclick=()=>{record(q,b.dataset.r);store[q.id]._now=1;render();delete store[q.id]._now})}
+function step(d){if(!order.length)return;pos=(pos+d+order.length)%order.length;reset();render();window.scrollTo(0,0)}
+$("next").onclick=()=>step(1);$("prev").onclick=()=>step(-1);
+$("recall").onchange=e=>{recall=e.target.checked;ls(K.recall,recall?"1":"0");opened=false;render()};
+$("timed").onchange=e=>{timed=e.target.checked;ls(K.timed,timed?"1":"0");render()};
 
 // ---------- frameworks
-function fws(){document.getElementById("fwlist").innerHTML=FW.map(f=>`<details class="card fw"><summary>${esc(f.t)}<span class="pill">${esc(f.tag)}</span></summary>
+function fws(){$("fwlist").innerHTML=FW.map(f=>`<details class="card fw" data-tag="${esc(f.tag)}"><summary>${esc(f.t)}<span class="tg">${esc(f.tag)}</span></summary>
 <div class="lbl">Structure</div><ol>${f.steps.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>
 <div class="lbl">Phrases that work</div><ul>${f.phrases.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
 <div class="lbl">Critical fails</div><ul class="fail">${f.fails.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`).join("")}
 
-// ---------- reset
-const dlg=document.getElementById("dlg");
-document.getElementById("reset").onclick=e=>{e.preventDefault();dlg.classList.add("on")};
-document.getElementById("dNo").onclick=()=>dlg.classList.remove("on");
-document.getElementById("dYes").onclick=()=>{store={};save();dlg.classList.remove("on");build();home()};
+// ---------- about / reset
+const dlg=$("dlg");
+$("reset").onclick=e=>{e.preventDefault();dlg.classList.add("on")};
+$("dNo").onclick=()=>dlg.classList.remove("on");
+$("dYes").onclick=()=>{store={};days={};save();dlg.classList.remove("on");build();toast("Progress cleared")};
+$("replay").onclick=e=>{e.preventDefault();ss("mrcem_splash","");location.hash="#about";location.reload()};
+$("reob").onclick=e=>{e.preventDefault();ls(K.onb,"0");onboarding().then(()=>{chipsSync();home();show("home")})};
+$("aboutCount").textContent=`${QB.length} items (${QB.filter(q=>q.t==="say").length} Say-it cards) across ${Object.keys(DOM).length} domains, plus ${FW.length} station frameworks.`;
 
-const rc=document.getElementById("recall");rc.checked=recall;rc.onchange=e=>{recall=e.target.checked;ls(RKEY,recall?"1":"0");opened=false;render()};
-// ---------- install (PWA)
-const standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
-let deferred=null;
-if(!standalone){
-  const box=document.getElementById("installBox"),txt=document.getElementById("installTxt"),btn=document.getElementById("installBtn");
-  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-  box.classList.remove("hide");
-  txt.innerHTML=ios?"On iPhone: open this page in <b>Safari</b>, tap the <b>Share</b> button, then <b>Add to Home Screen</b>. It opens full-screen with its own icon and works offline.":"Install it to open full-screen from your home screen and use it offline. If no button appears, use your browser menu → <b>Install app</b> / <b>Add to Home screen</b>.";
+// ---------- install / sw
+const standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;let deferred=null;
+if(!standalone){const box=$("installBox"),txt=$("installTxt"),btn=$("installBtn"),ios=/iphone|ipad|ipod/i.test(navigator.userAgent);box.classList.remove("hide");
+  txt.innerHTML=ios?"On iPhone: open this page in <b>Safari</b> → <b>Share</b> → <b>Add to Home Screen</b>. It opens full-screen with its own icon and works offline.":"Install to open full-screen from your home screen and use it offline. No button? Use the browser menu → <b>Install app</b>.";
   window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;btn.classList.remove("hide")});
   btn.onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;btn.classList.add("hide")};
-  window.addEventListener("appinstalled",()=>box.classList.add("hide"));
-}
-if("serviceWorker" in navigator&&location.protocol.startsWith("http")){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+  window.addEventListener("appinstalled",()=>box.classList.add("hide"))}
+if("serviceWorker" in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
 
 // ---------- backup
-document.getElementById("expBtn").onclick=()=>{
-  const data={app:"mrcem-osce",v:1,date:new Date().toISOString(),store,exam:ls(DKEY),paid:ls(PKEY)};
-  const blob=new Blob([JSON.stringify(data)],{type:"application/json"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="mrcem-progress-"+new Date().toISOString().slice(0,10)+".json";
-  document.body.appendChild(a);a.click();a.remove();
-  document.getElementById("bkMsg").textContent="Backup saved ("+Object.keys(store).length+" items).";
-};
-document.getElementById("impFile").onchange=e=>{
-  const f=e.target.files[0];if(!f)return;const r=new FileReader();
-  r.onload=()=>{try{const d=JSON.parse(r.result);if(d.app!=="mrcem-osce"||!d.store)throw 0;
-    for(const k in d.store){const a=store[k],b=d.store[k];if(!a||(b.n||0)>(a.n||0))store[k]=b}
-    if(d.exam)ls(DKEY,d.exam);if(d.paid)ls(PKEY,d.paid);save();build();home();
-    document.getElementById("bkMsg").textContent="Imported — progress merged.";}catch(x){document.getElementById("bkMsg").textContent="That file isn't a valid MRCEM backup."}};
-  r.readAsText(f);e.target.value="";
-};
+$("expBtn").onclick=()=>{const data={app:"mrcem-osce",v:2,date:new Date().toISOString(),store,days,exam:ls(K.date),paid:ls(K.paid)};
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:"application/json"}));a.download="mrcem-progress-"+today()+".json";document.body.appendChild(a);a.click();a.remove();$("bkMsg").textContent="Backup saved ("+Object.keys(store).length+" items)."};
+$("impFile").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const d=JSON.parse(r.result);if(d.app!=="mrcem-osce"||!d.store)throw 0;for(const k in d.store){const a=store[k],b=d.store[k];if(!a||(b.n||0)>(a.n||0))store[k]=b}
+    if(d.days)for(const k in d.days){if(!days[k]||(d.days[k].n||0)>(days[k].n||0))days[k]=d.days[k]}
+    if(d.exam)ls(K.date,d.exam);if(d.paid)ls(K.paid,d.paid);save();build();home();$("bkMsg").textContent="Imported — progress merged."}catch(x){$("bkMsg").textContent="That file isn't a valid MRCEM backup."}};r.readAsText(f);e.target.value=""};
 
-save();chipsAll();build();fws();tDraw();show("home");
+// ---------- boot
+function chipsSync(){$("recall").checked=recall;$("timed").checked=timed}
+save();chipsSync();chips();build();fws();tDraw();home();
+const route=(location.hash||"").slice(1);
+splash(false).then(onboarding).then(()=>{chipsSync();
+  if(route==="due")startPractice("all","due");else if(route==="timer"){show("home");setTimeout(()=>$("timerCard").scrollIntoView({block:"center"}),60)}
+  else show(["practice","fw","about"].includes(route)?route:"home")});
+window.addEventListener("hashchange",()=>{const r=location.hash.slice(1);if(["home","practice","fw","about"].includes(r)&&r!==tab)show(r)});
 </script>
 </body>
 </html>

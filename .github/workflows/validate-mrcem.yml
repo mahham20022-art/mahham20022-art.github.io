@@ -1,0 +1,16 @@
+name: Validate MRCEM bank
+on:
+  push:
+    paths: ["mrcem/**", "scripts/validate-mrcem.mjs"]
+  pull_request:
+    paths: ["mrcem/**", "scripts/validate-mrcem.mjs"]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check IDs, answer keys, Say-it cards and offline file list
+        run: node scripts/validate-mrcem.mjs

@@ -1,5 +1,15 @@
 // Station frameworks: structure, key phrases, critical fails
 window.FW = [
+{t:"The 1-minute reading routine (before every station)", tag:"Routine", steps:[
+"Read the whole instruction once, then the task line again",
+"Underline the verb: assess / explain / manage / examine / teach / handover — that is the mark scheme",
+"Note who you are, where you are, and who is in the room (patient, relative, nurse, examiner)",
+"Name the one thing that must not be missed in this scenario",
+"Prepare your first sentence (name, role, purpose)",
+"Plan the clock: open by 0:30, core task by 6:00, close and safety-net from 6:00–8:00",
+"Last 10 seconds: one slow breath. Leave the previous station behind"],
+phrases:["\"Hello, I'm Dr Najm, one of the emergency doctors. I've been asked to…\"","\"Before we start, is now a good time to talk?\""],
+fails:["Starting without knowing the task verb","Carrying a bad station into the next one","No time left for summary and safety-netting"]},
 {t:"History-taking station", tag:"History", steps:[
 "Introduce yourself (name, role), confirm patient ID, gain consent, check comfort/analgesia",
 "Open question, then listen ~30–60 s without interrupting",

@@ -1,0 +1,2 @@
+Inter and Inter Display — copyright the Inter Project Authors (https://github.com/rsms/inter). SIL Open Font License 1.1.
+GFS Baskerville — copyright (c) 2007 Greek Font Society, Reserved Font Name 'GFS Baskerville'. SIL Open Font License 1.1 (https://openfontlicense.org). Shipped unmodified.
